@@ -252,3 +252,5 @@ svg.donut { width: 100%; max-width: 340px; display: block; margin: 4px auto; ove
 .sim-hit { fill: transparent; }
 .sim-row { cursor: pointer; }
 .sim-row:hover .sim-hit, .sim-row:focus .sim-hit { fill: var(--grid); opacity: 0.5; }
+.support-btn { display: inline-block; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; }
+.support-btn:hover { background: var(--border); }

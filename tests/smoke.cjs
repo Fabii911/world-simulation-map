@@ -173,6 +173,7 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     const srcText = await page.textContent('#info-sources');
     check(srcText.includes('Weltbank') && srcText.includes('zuletzt abgerufen'), 'Quellenliste mit Abrufdatum');
     check(!(await page.textContent('body')).toLowerCase().includes('podcast'), 'keine Podcast-Formulierung auf der Seite');
+    check((await page.getAttribute('a.support-btn', 'href')) === 'https://github.com/sponsors/Fabii911', 'Sponsor-Link auf der Methodenseite');
 
     check(consoleErrors.length === 0, `keine Fehler in der Browser-Konsole${consoleErrors.length ? ': ' + consoleErrors.join(' | ') : ''}`);
   } catch (e) {
