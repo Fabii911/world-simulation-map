@@ -179,6 +179,24 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     await page.waitForTimeout(500);
     check((await page.textContent('#pr-profile')).includes('Südkorea'), 'Direktlink auf ein Land (#druck/KOR)');
 
+    console.log('Aus Sicht von');
+    await page.goto(`http://127.0.0.1:${PORT}/#sicht/DEU`);
+    await page.waitForSelector('#pv-profile g.pv-row', { timeout: 15000 });
+    await page.waitForTimeout(500);
+    check((await page.locator('#pv-profile g.pv-row').count()) === 10, '10 Kanäle im Betroffenheitsprofil');
+    const head = await page.textContent('#pv-head');
+    console.log('    ' + head.replace(/\s+/g, ' ').trim());
+    check(head.includes('Deutschland'), 'Kopfzeile für Deutschland');
+    check((await page.locator('#pv-chains li').count()) >= 3, 'relevante Ketten gelistet');
+    check(await page.evaluate(() => window.__cyEgo && window.__cyEgo.nodes().length > 5), 'Ego-Netz gezeichnet');
+    await page.selectOption('#pv-compare', 'JPN');
+    await page.waitForTimeout(300);
+    check((await page.locator('#pv-profile circle.pv-dot.cmp').count()) >= 5, 'Vergleich mit Japan');
+    await shot('16-sicht');
+    await page.selectOption('#pv-country', 'CHN');
+    await page.waitForTimeout(300);
+    check((await page.textContent('#pv-head')).includes('China'), 'Perspektive China wählbar');
+
     console.log('Ketten');
     await page.goto(`http://127.0.0.1:${PORT}/#ketten/china-auto`);
     await page.waitForSelector('#ch-main .ch-step', { timeout: 15000 });

@@ -95,7 +95,15 @@ try {
       else if (sp.source === 'series' && !ind.has(sp.ind)) err(`evidence.json: ${k}.${side} unbekannte Kennzahl ${sp.ind}`);
     }
   }
-  seriesInfo += `, Ketten: ${ch.chains.length}, Datenbelege: ${Object.keys(ev.edges).length}`;
+  const pv = read('data/perspective.json');
+  const chainIds = new Set(ch.chains.map((c) => c.id));
+  for (const c of pv.channels) {
+    for (const n of c.nodes) if (!nodeIds.has(n)) err(`perspective.json: ${c.id} unbekannter Knoten ${n}`);
+    for (const k of c.chains) if (!chainIds.has(k)) err(`perspective.json: ${c.id} unbekannte Kette ${k}`);
+    if (c.source.type === 'series' && !ind.has(c.source.ind)) err(`perspective.json: ${c.id} unbekannte Kennzahl ${c.source.ind}`);
+    if (!['high', 'low'].includes(c.direction)) err(`perspective.json: ${c.id} Richtung ${c.direction}`);
+  }
+  seriesInfo += `, Ketten: ${ch.chains.length}, Datenbelege: ${Object.keys(ev.edges).length}, Perspektiv-Kanäle: ${pv.channels.length}`;
 } catch (e) { err(`chains/evidence: ${e.message}`); }
 try {
   const tr = read('data/series/trade.json');

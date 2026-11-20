@@ -13,6 +13,7 @@
       <a href="#karte" role="tab" data-view="karte">Weltkarte</a>
       <a href="#diagnose" role="tab" data-view="diagnose">Diagnose</a>
       <a href="#druck" role="tab" data-view="druck">Handelsdruck</a>
+      <a href="#sicht" role="tab" data-view="sicht">Aus Sicht von</a>
       <a href="#netz" role="tab" data-view="netz">Wirkungsnetz</a>
       <a href="#ketten" role="tab" data-view="ketten">Ketten</a>
       <a href="#sim" role="tab" data-view="sim">Simulation</a>
@@ -99,6 +100,28 @@
       <details class="table-view">
         <summary>Druckmatrix als Tabelle (alle Länder)</summary>
         <div id="pr-table"></div>
+      </details>
+    </section>
+
+    <!-- Aus Sicht von -->
+    <section id="view-sicht" class="view" hidden>
+      <div class="toolbar">
+        <label class="year-ctl">Aus Sicht von <select id="pv-country" aria-label="Land"></select></label>
+        <label class="year-ctl">im Vergleich mit <select id="pv-compare" aria-label="Vergleichsland"></select></label>
+      </div>
+      <div id="pv-head" class="reading" aria-live="polite"></div>
+      <div class="pv-grid2">
+        <div class="pv-box"><h3 class="pv-h">Betroffenheit nach Kanal</h3><div id="pv-profile"></div><div id="pv-legend" class="legend"></div></div>
+        <div class="pv-box"><div id="pv-chains"></div></div>
+      </div>
+      <div class="pv-box">
+        <h3 class="pv-h">Ego-Netz: betroffene Größen und ihre direkten Ursachen und Folgen</h3>
+        <p class="muted">Größere Knoten = stärkere Betroffenheit. Blasse Knoten sind direkte Nachbarn. Klick öffnet die Größe im Wirkungsnetz.</p>
+        <div id="pv-graph" class="pv-graph" aria-label="Ego-Netz"></div>
+      </div>
+      <details class="table-view">
+        <summary>Profil als Tabelle</summary>
+        <div id="pv-table"></div>
       </details>
     </section>
 
@@ -205,6 +228,11 @@
       <p>Für jedes Land und jede Gütergruppe: Anteil der Gütergruppe an den Warenexporten des Landes im Basisjahr × Veränderung von Chinas Weltmarktanteil in dieser Gütergruppe bis zum Endjahr.
         Die Summe über alle Gütergruppen ist der Druck auf das Land, in Prozentpunkten. Das Maß ist an die Importwettbewerbs-Exposition nach Autor, Dorn und Hanson (2013) angelehnt.
         Es zeigt, wo Konkurrenzdruck ankommt, nicht ob daraus Verluste entstehen. Werte in laufenden US-Dollar; Kapitel 99 („nicht zugeordnet“) bleibt außen vor.</p>
+      <h2>Wie „Aus Sicht von“ gewichtet</h2>
+      <p>Die Wirkungslogik ist für alle Länder dieselbe. Die Perspektive zeigt, über welche Kanäle sie ein Land trifft:
+        Für jeden Kanal (z. B. Konkurrenzdruck durch China, Exportabhängigkeit, Energieimporte) gibt es eine Kennzahl.
+        Die Betroffenheit ist das Perzentil des Landes unter allen Ländern mit Daten (100 = am stärksten betroffen).
+        Daraus ergeben sich die relevanten Ketten und das Ego-Netz der betroffenen Größen. Die Kanäle stehen in <code>data/perspective.json</code>.</p>
       <h2>Wie Kausalität und Korrelation getrennt werden</h2>
       <p><b>Kausalität</b> heißt hier: Eine Wirkung ist durch geprüfte Aussagen aus der Literatur begründet (Faktencheck).
         <b>Korrelation</b> heißt: Zwei Kennzahlen, die für Ursache und Wirkung stehen, verändern sich von Jahr zu Jahr gemeinsam.
