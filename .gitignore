@@ -21,3 +21,6 @@ playwright-report/
 .DS_Store
 Thumbs.db
 *.log
+
+# Lokale Arbeitsregeln für Claude – nicht veröffentlichen
+CLAUDE.md
