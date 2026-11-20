@@ -26,6 +26,7 @@ Das Projekt verbindet drei Dinge:
 | **Diagnose** | Privater Konsum gegen Leistungsbilanzsaldo, animiert über die Jahre. Ordnet Länder Typen zu, z. B. „Nachfrageschwäche wird exportiert“ oder „Defizit mit hohem Konsum“ |
 | **Handelsdruck** | Druckmatrix: Welches Land steht bei welchem Gut unter Konkurrenzdruck durch China, und wie verschiebt sich das über die Zeit (2000 bis heute)? Dazu Exportkorb je Land und Weltmarktanteile im Vergleich mit China |
 | **Aus Sicht von** | Über welche Kanäle treffen die Mechanismen ein gewähltes Land (Konkurrenzdruck durch China, Exportabhängigkeit, Energieimporte, Rüstung, Klima, Biodiversität u. a.)? Betroffenheit als Perzentil unter allen Ländern, Vergleich zweier Länder, relevante Ketten und Ego-Netz |
+| **Lieferketten** | Abhängigkeits-Quadrant für rund 30 kritische Importgüter je Land (Lieferkonzentration, Importabhängigkeit, Anteil Chinas, größte Lieferländer seit 2010) und Herkunft der Wertschöpfung in Exporten nach Branche (OECD TiVA) |
 | **Wirkungsnetz** | 50 Größen, 83 Wirkungen, 11 Rückkopplungsschleifen. Jede Wirkung verweist auf die Aussagen, die sie begründen |
 | **Ketten** | Ursache-Wirkungs-Ketten Schritt für Schritt (9 vordefinierte, dazu freie Pfadsuche zwischen zwei Größen). Jeder Schritt zeigt getrennt den Literaturbeleg (Kausalität) und den Datenbeleg (Korrelation der Jahresveränderungen) |
 | **Simulation** | Hebel setzen (z. B. „China baut den Sozialstaat aus“, „Weltweiter Protektionismus“) und sehen, wie sich die Wirkung durch das Netz ausbreitet |
@@ -47,6 +48,7 @@ Das Projekt verbindet drei Dinge:
 | [Weltbank, World Development Indicators](https://data.worldbank.org) | CC BY 4.0 | Leistungsbilanz, Konsum, Ersparnis, Investitionen, Rohstoffrenten, Inflation, Arbeitslosigkeit u. a. | monatlich automatisch |
 | [Our World in Data](https://ourworldindata.org) | CC BY 4.0 | CO₂ (Global Carbon Project), Erneuerbare (Ember), Demokratie (V-Dem), Militärausgaben (SIPRI), Ungleichheit (WID), Korruption (Transparency International), Lohnquote (ILO), Rote Liste (IUCN), Waldverlust (Global Forest Watch), Agrarfläche (FAO) | monatlich automatisch |
 | [Atlas of Economic Complexity, Harvard Growth Lab](https://atlas.hks.harvard.edu) (doi:10.7910/DVN/T4CHWJ) | CC0 | Warenexporte nach Land, Gütergruppe (HS-Kapitel) und Jahr | monatlich automatisch |
+| [OECD Trade in Value Added (TiVA)](https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html) | OECD-Nutzungsbedingungen | Herkunft der Wertschöpfung in Exporten nach Land und Branche | monatlich automatisch |
 | [Fanning u. a. 2022, Universität Leeds](https://goodlife.leeds.ac.uk/download-data/) | Zitierpflicht | Donut: soziale Mindeststandards und planetare Grenzen je Land (1992–2015) | manuell bei neuer Version |
 | [Natural Earth](https://www.naturalearthdata.com) über world-atlas | gemeinfrei / ISC | Ländergrenzen | statisch |
 
@@ -92,6 +94,14 @@ npm run fetch:owid
 
 ```bash
 npm run fetch:atlas
+```
+
+```bash
+npm run fetch:dependencies
+```
+
+```bash
+npm run fetch:tiva
 ```
 
 Donut-Daten (Excel-Datei der Universität Leeds, benötigt `openpyxl`):

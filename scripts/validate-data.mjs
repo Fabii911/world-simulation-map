@@ -106,6 +106,20 @@ try {
   seriesInfo += `, Ketten: ${ch.chains.length}, Datenbelege: ${Object.keys(ev.edges).length}, Perspektiv-Kanäle: ${pv.channels.length}`;
 } catch (e) { err(`chains/evidence: ${e.message}`); }
 try {
+  const dp = read('data/series/dependencies.json');
+  const n = dp.meta.years.length;
+  for (const [c, prods] of Object.entries(dp.data)) for (const [code, v] of Object.entries(prods)) {
+    if (!dp.meta.products[code]) err(`dependencies.json: unbekanntes Produkt ${code}`);
+    if ([v.M, v.X, v.cn, v.hhi].some((a) => a.length !== n)) err(`dependencies.json: ${c}/${code} falsche Länge`);
+    if (v.cn.some((x) => x !== null && (x < 0 || x > 1)) || v.hhi.some((x) => x !== null && (x < 0 || x > 1))) err(`dependencies.json: ${c}/${code} Anteil außerhalb 0..1`);
+  }
+  const tv = read('data/series/tiva.json');
+  for (const [ex, acts] of Object.entries(tv.data)) for (const [a, ys] of Object.entries(acts)) for (const [y, r] of Object.entries(ys)) {
+    if (!(r.total > 0) || r.dom < 0 || r.dom > r.total * 1.001) err(`tiva.json: ${ex}/${a}/${y} unplausibel`);
+  }
+  seriesInfo += `, Abhängigkeiten: ${Object.keys(dp.data).length} Länder × ${Object.keys(dp.meta.products).length} Güter, TiVA: ${Object.keys(tv.data).length} Länder`;
+} catch (e) { if (e.code !== 'ENOENT') err(`dependencies/tiva: ${e.message}`); }
+try {
   const tr = read('data/series/trade.json');
   const n = tr.meta.years.length;
   for (const [ch, a] of Object.entries(tr.world)) { if (!tr.meta.chapters[ch]) err(`trade.json: unbekanntes Kapitel ${ch}`); if (a.length !== n) err(`trade.json: Welt/${ch} falsche Länge`); }

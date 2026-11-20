@@ -183,7 +183,7 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     await page.goto(`http://127.0.0.1:${PORT}/#sicht/DEU`);
     await page.waitForSelector('#pv-profile g.pv-row', { timeout: 15000 });
     await page.waitForTimeout(500);
-    check((await page.locator('#pv-profile g.pv-row').count()) === 10, '10 Kanäle im Betroffenheitsprofil');
+    check((await page.locator('#pv-profile g.pv-row').count()) === 11, '11 Kanäle im Betroffenheitsprofil');
     const head = await page.textContent('#pv-head');
     console.log('    ' + head.replace(/\s+/g, ' ').trim());
     check(head.includes('Deutschland'), 'Kopfzeile für Deutschland');
@@ -196,6 +196,30 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     await page.selectOption('#pv-country', 'CHN');
     await page.waitForTimeout(300);
     check((await page.textContent('#pv-head')).includes('China'), 'Perspektive China wählbar');
+
+    console.log('Lieferketten');
+    await page.goto(`http://127.0.0.1:${PORT}/#lieferketten`);
+    await page.waitForSelector('#sc-quadrant g.sc-pt', { timeout: 15000 });
+    await page.waitForTimeout(400);
+    const nPts = await page.locator('#sc-quadrant g.sc-pt').count();
+    check(nPts >= 25, `Quadrant zeigt kritische Güter (${nPts})`);
+    const scp = await page.textContent('#sc-panel');
+    check(scp.includes('Batterien') && scp.includes('Anteil China'), 'Detail Batterien mit China-Anteil');
+    check((await page.locator('#sc-suppliers rect.sc-bar').count()) >= 3, 'größte Lieferländer als Balken');
+    console.log('    ' + (await page.textContent('#sc-summary')).replace(/\s+/g, ' ').trim());
+    await shot('17-lieferketten');
+    await page.click('#sc-groups [data-g="Kritische Rohstoffe"]');
+    await page.waitForTimeout(200);
+    check((await page.locator('#sc-quadrant g.sc-pt').count()) <= 8, 'Filter Kritische Rohstoffe');
+    const va = await page.textContent('#va-main');
+    console.log('    ' + va.split('Herkunft')[0].replace(/\s+/g, ' ').trim());
+    check(va.includes('Kraftfahrzeuge') && va.includes('China'), 'Wertschöpfung deutscher Autoexporte mit China-Anteil');
+    check((await page.locator('#va-bars rect.sc-bar').count()) >= 5, 'Herkunftsländer der Wertschöpfung');
+    await page.evaluate(() => document.getElementById('va-main').scrollIntoView());
+    await shot('18-wertschoepfung');
+    await page.goto(`http://127.0.0.1:${PORT}/#lieferketten/USA`);
+    await page.waitForTimeout(500);
+    check((await page.inputValue('#sc-imp')) === 'USA', 'Direktlink #lieferketten/USA');
 
     console.log('Ketten');
     await page.goto(`http://127.0.0.1:${PORT}/#ketten/china-auto`);

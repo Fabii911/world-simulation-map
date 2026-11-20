@@ -3,6 +3,7 @@
 import { esc, domainColor, cssVar } from './data.js';
 import { loadSeries, valNear, goodYear, classify, TYPES, fmt } from './series.js';
 
+let DEPS = null;
 let D = null, S = null, T = null, P = null, chains = [], iso = 'DEU', compare = '', cyEgo = null, cache = {};
 const $ = (id) => document.getElementById(id);
 const MECH = { M1: 'Ungleichgewicht', M2: 'Abhängigkeit', M3: 'Machtkonzentration', M4: 'Planetare Grenzen' };
@@ -10,7 +11,7 @@ const MECH = { M1: 'Ungleichgewicht', M2: 'Abhängigkeit', M3: 'Machtkonzentrati
 export async function initPerspective(data) {
   D = data;
   const get = (p) => fetch(p).then((r) => { if (!r.ok) throw new Error(`${p}: HTTP ${r.status}`); return r.json(); });
-  [S, T, P, chains] = await Promise.all([loadSeries(), get('data/series/trade.json'), get('data/perspective.json'), get('data/chains.json').then((c) => c.chains)]);
+  [S, T, P, chains, DEPS] = await Promise.all([loadSeries(), get('data/series/trade.json'), get('data/perspective.json'), get('data/chains.json').then((c) => c.chains), get('data/series/dependencies.json').catch(() => null)]);
   const names = Object.entries(S.wb.countries).sort((a, b) => a[1].name.localeCompare(b[1].name, 'de'));
   const opts = names.map(([c, v]) => `<option value="${c}">${esc(v.name)}</option>`).join('');
   $('pv-country').innerHTML = opts; $('pv-country').value = iso;
@@ -63,7 +64,26 @@ function seriesAll(ind) {
   return (cache[key] = out);
 }
 
+function dependencyChinaAll() {
+  if (cache.depcn) return cache.depcn;
+  const out = {};
+  if (!DEPS) return (cache.depcn = out);
+  const groups = new Set(['Energiewende', 'Kritische Rohstoffe', 'Elektronik', 'Gesundheit']);
+  const i = DEPS.meta.years.length - 1;
+  for (const [c, prods] of Object.entries(DEPS.data)) {
+    if (c === 'CHN') continue;
+    let m = 0, cn = 0;
+    for (const [code, v] of Object.entries(prods)) {
+      if (!groups.has(DEPS.meta.products[code].group) || !v.M[i]) continue;
+      m += v.M[i]; cn += v.M[i] * (v.cn[i] || 0);
+    }
+    if (m) out[c] = { value: cn / m * 100, year: DEPS.meta.years[i] };
+  }
+  return (cache.depcn = out);
+}
+
 function channelValues(ch) {
+  if (ch.source.type === 'dependency_china') return dependencyChinaAll();
   if (ch.source.type === 'trade_pressure') return tradePressureAll();
   if (ch.source.type === 'trade_sector_share') return sectorShareAll(ch.source.sector);
   return seriesAll(ch.source.ind);

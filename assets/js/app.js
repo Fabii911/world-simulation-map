@@ -9,8 +9,9 @@ import { initSimulation } from './simulation.js';
 import { initPressure, focusPressureCountry } from './pressure.js';
 import { initChains, showChain } from './chains.js';
 import { initPerspective, setPerspective } from './perspective.js';
+import { initSupply, setSupplyCountry } from './supply.js';
 
-const VIEWS = ['karte', 'diagnose', 'druck', 'sicht', 'netz', 'ketten', 'sim', 'zeit', 'fakten', 'info'];
+const VIEWS = ['karte', 'diagnose', 'druck', 'sicht', 'lieferketten', 'netz', 'ketten', 'sim', 'zeit', 'fakten', 'info'];
 let data = null;
 let graphReady = false;
 let mapReady = null;
@@ -19,6 +20,7 @@ let simReady = false;
 let pressureReady = null;
 let chainsReady = null;
 let perspectiveReady = null;
+let supplyReady = null;
 
 function parseHash() {
   const [view, arg] = location.hash.replace(/^#/, '').split('/');
@@ -56,6 +58,11 @@ async function route() {
     perspectiveReady ||= initPerspective(data).catch((e) => seriesError(e, 'pv-profile'));
     await perspectiveReady;
     if (arg) setPerspective(arg);
+  }
+  if (view === 'lieferketten') {
+    supplyReady ||= initSupply().catch((e) => seriesError(e, 'sc-quadrant'));
+    await supplyReady;
+    if (arg) setSupplyCountry(arg);
   }
   if (view === 'ketten') {
     chainsReady ||= initChains(data).catch((e) => { document.getElementById('ch-main').innerHTML = `<p>Ketten konnten nicht geladen werden (${e.message}).</p>`; });

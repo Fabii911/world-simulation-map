@@ -34,6 +34,12 @@ jobs:
       - name: Handelsdaten (Atlas of Economic Complexity) abrufen
         run: node scripts/fetch-atlas.mjs
 
+      - name: Kritische Importgüter (Atlas) abrufen
+        run: node scripts/fetch-dependencies.mjs
+
+      - name: Wertschöpfung in Exporten (OECD TiVA) abrufen
+        run: node scripts/fetch-tiva.mjs
+
       - name: Daten prüfen
         run: node scripts/validate-data.mjs
 
