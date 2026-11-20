@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "note": "Register aller Datenquellen. 'update' beschreibt, wie die Daten aktuell gehalten werden."
+ },
+ "sources": [
+  {
+   "id": "worldbank",
+   "name": "World Development Indicators",
+   "publisher": "Weltbank",
+   "url": "https://data.worldbank.org",
+   "api": "https://api.worldbank.org/v2",
+   "license": "CC BY 4.0",
+   "used_for": "Leistungsbilanz, Konsum, Ersparnis, Investitionen, Exporte, Rohstoffrenten, Inflation, Jugendarbeitslosigkeit, Gesundheitskosten, Energieimporte, Gini, Schutzgebiete",
+   "file": "data/series/worldbank.json",
+   "script": "scripts/fetch-worldbank.mjs",
+   "update": "automatisch, monatlich (GitHub Actions)"
+  },
+  {
+   "id": "owid",
+   "name": "Our World in Data",
+   "publisher": "Global Change Data Lab, Universität Oxford",
+   "url": "https://ourworldindata.org",
+   "api": "https://ourworldindata.org/grapher/<slug>.csv",
+   "license": "CC BY 4.0",
+   "used_for": "CO₂ (Global Carbon Project), Erneuerbare (Ember), Demokratie (V-Dem), Militärausgaben (SIPRI), Einkommensanteil Top 10 % (WID), Korruption (Transparency International), Lohnquote (ILO), Rote Liste (IUCN), Waldverlust (Global Forest Watch), Agrarfläche (FAO)",
+   "file": "data/series/owid.json",
+   "script": "scripts/fetch-owid.mjs",
+   "update": "automatisch, monatlich (GitHub Actions)"
+  },
+  {
+   "id": "doughnut",
+   "name": "The social shortfall and ecological overshoot of nations",
+   "publisher": "Fanning, O'Neill, Hickel, Roux (2022), Nature Sustainability 5, 26–36; Daten: Universität Leeds",
+   "url": "https://goodlife.leeds.ac.uk/download-data/",
+   "license": "Zitierpflicht laut Herausgeber; Artikel open access",
+   "used_for": "Donut je Land: 11 soziale Mindeststandards, 6 planetare Grenzen pro Kopf (1992–2015)",
+   "file": "data/series/doughnut.json",
+   "script": "scripts/convert-doughnut.py",
+   "update": "manuell, wenn eine neue Version des Datensatzes erscheint"
+  },
+  {
+   "id": "naturalearth",
+   "name": "Natural Earth (über world-atlas)",
+   "publisher": "Natural Earth / Mike Bostock",
+   "url": "https://github.com/topojson/world-atlas",
+   "license": "gemeinfrei (Natural Earth), ISC (world-atlas)",
+   "used_for": "Ländergrenzen der Weltkarte",
+   "file": "assets/vendor/countries-110m.json",
+   "script": null,
+   "update": "statisch"
+  },
+  {
+   "id": "model",
+   "name": "Wirkungsmodell, Faktencheck, Zeitleiste",
+   "publisher": "Eigene Ausarbeitung auf Basis der Literatur in docs/quellen.md",
+   "url": "docs/quellen.md",
+   "license": "siehe Repository",
+   "used_for": "Größen, Wirkungen, Rückkopplungsschleifen, geprüfte Aussagen, Ereignisse",
+   "file": "data/model.json, data/timeline.json",
+   "script": "scripts/validate-data.mjs",
+   "update": "redaktionell; jede Änderung wird automatisch auf Konsistenz geprüft"
+  }
+ ]
+}
