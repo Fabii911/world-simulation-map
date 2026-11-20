@@ -28,6 +28,18 @@
    "update": "automatisch, monatlich (GitHub Actions)"
   },
   {
+   "id": "atlas",
+   "name": "International Trade Data (HS, 92) – Atlas of Economic Complexity",
+   "publisher": "Growth Lab at Harvard University, doi:10.7910/DVN/T4CHWJ",
+   "url": "https://atlas.hks.harvard.edu",
+   "api": "https://atlas.hks.harvard.edu/api/graphql",
+   "license": "CC0 1.0",
+   "used_for": "Warenexporte nach Land × HS-Kapitel × Jahr (2000 bis letztes verfügbares Jahr): Druckmatrix, Exportkorb, Weltmarktanteile",
+   "file": "data/series/trade.json",
+   "script": "scripts/fetch-atlas.mjs",
+   "update": "automatisch, monatlich (GitHub Actions); der Atlas aktualisiert jährlich"
+  },
+  {
    "id": "doughnut",
    "name": "The social shortfall and ecological overshoot of nations",
    "publisher": "Fanning, O'Neill, Hickel, Roux (2022), Nature Sustainability 5, 26–36; Daten: Universität Leeds",

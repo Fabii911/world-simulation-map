@@ -6,13 +6,15 @@ import { initClaims, focusClaim } from './claims.js';
 import { initWorldmap, selectCountry } from './worldmap.js';
 import { initDiagnose, focusCountry } from './diagnose.js';
 import { initSimulation } from './simulation.js';
+import { initPressure, focusPressureCountry } from './pressure.js';
 
-const VIEWS = ['karte', 'diagnose', 'netz', 'sim', 'zeit', 'fakten', 'info'];
+const VIEWS = ['karte', 'diagnose', 'druck', 'netz', 'sim', 'zeit', 'fakten', 'info'];
 let data = null;
 let graphReady = false;
 let mapReady = null;
 let diagReady = null;
 let simReady = false;
+let pressureReady = null;
 
 function parseHash() {
   const [view, arg] = location.hash.replace(/^#/, '').split('/');
@@ -40,6 +42,11 @@ async function route() {
     diagReady ||= initDiagnose().catch((e) => seriesError(e, 'diagnose'));
     await diagReady;
     if (arg) focusCountry(arg);
+  }
+  if (view === 'druck') {
+    pressureReady ||= initPressure().catch((e) => seriesError(e, 'pr-matrix'));
+    await pressureReady;
+    if (arg) focusPressureCountry(arg);
   }
   if (view === 'netz') {
     if (!graphReady) { initGraph(data); graphReady = true; }

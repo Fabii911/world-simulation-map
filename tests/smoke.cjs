@@ -149,6 +149,36 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     check((await page.textContent('#dg-panel')).includes('Diagnose 2007'), 'Jahresregler wirkt');
     await shot('09-diagnose-2007');
 
+    console.log('Handelsdruck');
+    await page.goto(`http://127.0.0.1:${PORT}/#druck`);
+    await page.waitForSelector('#pr-matrix g.pr-row', { timeout: 15000 });
+    await page.waitForTimeout(400);
+    const prRows = await page.locator('#pr-matrix g.pr-row').count();
+    check(prRows >= 30, `Druckmatrix zeigt mindestens 30 Länder (${prRows})`);
+    const prCells = await page.locator('#pr-matrix rect.pr-cell').count();
+    check(prCells === prRows * 9, `9 Sektoren je Land (${prCells} Felder)`);
+    const prof = await page.textContent('#pr-profile');
+    check(prof.includes('Deutschland') && prof.includes('Exportkorb'), 'Profil Deutschland mit Exportkorb');
+    check((await page.locator('#pr-treemap rect.pr-tm').count()) > 30, 'Treemap zeigt Gütergruppen');
+    check((await page.locator('#pr-shares path.pr-line.cn').count()) >= 1, 'Weltmarktanteile Land und China im Zeitverlauf');
+    const top = await page.textContent('#pr-panel');
+    check(top.includes('Fahrzeuge') || top.includes('Elektronik') || top.includes('Maschinen'), 'China legt bei Fahrzeugen, Maschinen oder Elektronik am stärksten zu');
+    await shot('12-druckmatrix');
+    await page.evaluate(() => document.getElementById('pr-profile').scrollIntoView());
+    await shot('13-exportkorb');
+    await page.click('#pr-presets [data-p="0"]');
+    await page.waitForTimeout(300);
+    check((await page.textContent('#pr-panel')).includes('2001–2007'), 'Zeitraum „China-Schock 1.0“ wählbar');
+    await page.selectOption('#pr-level', 'chapter');
+    await page.waitForTimeout(300);
+    check((await page.locator('#pr-matrix g.pr-row').first().locator('rect.pr-cell').count()) === 24, 'Kapitel-Ebene mit 24 Spalten');
+    await page.selectOption('#pr-colormode', 'pressure');
+    await page.waitForTimeout(200);
+    check((await page.textContent('#pr-treemap-legend')).includes('Chinas Weltmarktanteil'), 'Exportkorb nach Druck einfärbbar');
+    await page.goto(`http://127.0.0.1:${PORT}/#druck/KOR`);
+    await page.waitForTimeout(500);
+    check((await page.textContent('#pr-profile')).includes('Südkorea'), 'Direktlink auf ein Land (#druck/KOR)');
+
     console.log('Simulation');
     await page.goto(`http://127.0.0.1:${PORT}/#sim`);
     await page.waitForSelector('#sim-chart g.sim-row', { timeout: 10000 });

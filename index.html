@@ -12,6 +12,7 @@
     <nav class="tabs" role="tablist">
       <a href="#karte" role="tab" data-view="karte">Weltkarte</a>
       <a href="#diagnose" role="tab" data-view="diagnose">Diagnose</a>
+      <a href="#druck" role="tab" data-view="druck">Handelsdruck</a>
       <a href="#netz" role="tab" data-view="netz">Wirkungsnetz</a>
       <a href="#sim" role="tab" data-view="sim">Simulation</a>
       <a href="#zeit" role="tab" data-view="zeit">Zeitleiste</a>
@@ -61,6 +62,42 @@
       <details class="table-view">
         <summary>Werte als Tabelle</summary>
         <div id="dg-table"></div>
+      </details>
+    </section>
+
+    <!-- Handelsdruck -->
+    <section id="view-druck" class="view" hidden>
+      <div class="toolbar pr-controls">
+        <label>Von <select id="pr-t0" aria-label="Basisjahr"></select></label>
+        <label>bis <select id="pr-t1" aria-label="Endjahr"></select></label>
+        <label>Ebene <select id="pr-level" aria-label="Gliederung der Güter">
+          <option value="sector">9 Sektoren</option>
+          <option value="chapter">HS-Kapitel (24 mit größter Veränderung)</option>
+        </select></label>
+        <label>Länder <select id="pr-topn" aria-label="Anzahl Länder">
+          <option value="20">20 größte Exporteure</option>
+          <option value="30" selected>30 größte Exporteure</option>
+          <option value="60">60 größte Exporteure</option>
+          <option value="0">alle (154)</option>
+        </select></label>
+        <input id="pr-find" list="pr-countries" type="search" placeholder="Land wählen …" aria-label="Land wählen">
+        <datalist id="pr-countries"></datalist>
+      </div>
+      <div id="pr-presets" class="chips" aria-label="Zeiträume"></div>
+      <div class="split">
+        <div id="pr-matrix" class="pr-matrixbox" aria-label="Druckmatrix"></div>
+        <aside id="pr-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <div id="pr-legend" class="legend"></div>
+      <div class="toolbar"><label class="year-ctl">Exportkorb einfärben nach
+        <select id="pr-colormode" aria-label="Farbe der Treemap">
+          <option value="sector">Sektor</option>
+          <option value="pressure">Chinas Anteilsveränderung (Druck)</option>
+        </select></label></div>
+      <div id="pr-profile" class="pr-profile" aria-live="polite"></div>
+      <details class="table-view">
+        <summary>Druckmatrix als Tabelle (alle Länder)</summary>
+        <div id="pr-table"></div>
       </details>
     </section>
 
@@ -147,6 +184,10 @@
         <li><strong>Gepunktet</strong>: Wirkung mit Verzögerung. <strong>Strichstärke</strong>: wie sicher die Wirkung belegt ist.</li>
         <li><strong>Schleifen</strong>: R = verstärkend (Teufelskreis), B = ausgleichend.</li>
       </ul>
+      <h2>Wie der Handelsdruck berechnet wird</h2>
+      <p>Für jedes Land und jede Gütergruppe: Anteil der Gütergruppe an den Warenexporten des Landes im Basisjahr × Veränderung von Chinas Weltmarktanteil in dieser Gütergruppe bis zum Endjahr.
+        Die Summe über alle Gütergruppen ist der Druck auf das Land, in Prozentpunkten. Das Maß ist an die Importwettbewerbs-Exposition nach Autor, Dorn und Hanson (2013) angelehnt.
+        Es zeigt, wo Konkurrenzdruck ankommt, nicht ob daraus Verluste entstehen. Werte in laufenden US-Dollar; Kapitel 99 („nicht zugeordnet“) bleibt außen vor.</p>
       <h2>Wie die Simulation rechnet</h2>
       <p>Jede Größe bekommt einen Wert zwischen −1 (stark gesunken) und +1 (stark gestiegen). Gesetzte Hebel bleiben fest.
         In jedem Schritt summiert jede andere Größe die Werte ihrer Ursachen, gewichtet mit Pfeilgewicht × Sicherheit (unsichere Wirkungen tragen weniger weit), und begrenzt das Ergebnis mit tanh.

@@ -82,6 +82,14 @@ try {
 } catch (e) { if (e.code !== 'ENOENT') err(`doughnut.json: ${e.message}`); }
 
 try {
+  const tr = read('data/series/trade.json');
+  const n = tr.meta.years.length;
+  for (const [ch, a] of Object.entries(tr.world)) { if (!tr.meta.chapters[ch]) err(`trade.json: unbekanntes Kapitel ${ch}`); if (a.length !== n) err(`trade.json: Welt/${ch} falsche Länge`); }
+  if (!tr.countries.CHN) err('trade.json: China fehlt');
+  for (const [iso, chs] of Object.entries(tr.countries)) for (const [ch, a] of Object.entries(chs)) if (a.length !== n || a.some((v) => !Number.isInteger(v) || v < 0)) err(`trade.json: ${iso}/${ch} ungültig`);
+  seriesInfo += `, Handel: ${Object.keys(tr.countries).length} Länder × ${Object.keys(tr.meta.chapters).length} Kapitel, ${tr.meta.years[0]}–${tr.meta.years.at(-1)}`;
+} catch (e) { if (e.code !== 'ENOENT') err(`trade.json: ${e.message}`); }
+try {
   const src = read('data/sources.json');
   for (const s of src.sources) for (const k of ['id', 'name', 'publisher', 'url', 'license', 'used_for', 'update']) if (!s[k]) err(`sources.json: ${s.id || '?'} ohne ${k}`);
 } catch (e) { err(`sources.json: ${e.message}`); }
