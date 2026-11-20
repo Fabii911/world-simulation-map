@@ -7,6 +7,7 @@
 | `03_systemmodell.md` | Wirkungsmodell: Variablen, Wirkungen, Rückkopplungsschleifen, Hebel, bekannte Lücken |
 | `04_vertiefung.md` | Vertiefungen: Oligarchen und Macht in Russland, Deflation in China, Firmengröße und Monopole, 1914 und heute, Szenarien, KI und Energie, Handelsungleichgewichte |
 | `05_kennzahlen.md` | Kennzahlen je Dimension, Länder-Typen, Donut, Aufbau der Website |
+| `06_visualisierung.md` | Konzept: Darstellungsformen für Abhängigkeiten, Perspektive „Aus Sicht von“, Güterebene, Korrelation und Kausalität |
 | `quellen.md` | Literaturverzeichnis |
 
 ## Kernergebnisse des Faktenchecks
