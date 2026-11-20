@@ -179,6 +179,33 @@ const check = (cond, msg) => { if (cond) console.log(`  ✓ ${msg}`); else { fai
     await page.waitForTimeout(500);
     check((await page.textContent('#pr-profile')).includes('Südkorea'), 'Direktlink auf ein Land (#druck/KOR)');
 
+    console.log('Ketten');
+    await page.goto(`http://127.0.0.1:${PORT}/#ketten/china-auto`);
+    await page.waitForSelector('#ch-main .ch-step', { timeout: 15000 });
+    const nSteps = await page.locator('#ch-main .ch-step').count();
+    check(nSteps === 6, `Kette China–Autoindustrie mit 6 Schritten (${nSteps})`);
+    const main = await page.textContent('#ch-main');
+    check(main.includes('Gesamtrichtung') && main.includes('Schwächstes Glied'), 'Zusammenfassung der Kette');
+    const statuses = await page.locator('#ch-main .ev-badge').allTextContents();
+    console.log('    Datenbelege:', statuses.filter((t) => t.includes('Daten:')).join(' | '));
+    check(statuses.some((t) => t.includes('Daten passen') || t.includes('widersprechen') || t.includes('kein klarer')), 'mindestens ein Schritt mit Datenauswertung');
+    check((await page.locator('#ch-panel .ev-scatter circle').count()) >= 10, 'Evidenz-Panel zeigt Streudiagramm der Jahresveränderungen');
+    await shot('14-kette');
+    await page.locator('#ch-main .ch-link[data-step="3"]').click();
+    await page.waitForTimeout(200);
+    check((await page.textContent('#ch-panel')).includes('Fahrzeuge'), 'Schritt China → Autoindustrie mit Weltmarktanteilen Fahrzeuge');
+    await shot('15-kette-schritt');
+    await page.selectOption('#ch-from', 'GROW');
+    await page.selectOption('#ch-to', 'RES');
+    await page.click('#ch-find');
+    await page.waitForTimeout(300);
+    check((await page.textContent('#ch-main')).includes('Pfad 1'), 'Pfadsuche Wachstumsdruck → Resilienz findet einen Pfad');
+    await page.goto(`http://127.0.0.1:${PORT}/#netz`);
+    await page.waitForTimeout(600);
+    await page.evaluate(() => window.__cy.getElementById('e:CLIM>EMIS').emit('tap'));
+    await page.waitForTimeout(800);
+    check((await page.textContent('#net-panel')).includes('Korrelation (Daten)') && (await page.locator('#net-panel .ev-scatter circle').count()) > 5, 'Wirkungsnetz zeigt Datenbeleg zur Wirkung');
+
     console.log('Simulation');
     await page.goto(`http://127.0.0.1:${PORT}/#sim`);
     await page.waitForSelector('#sim-chart g.sim-row', { timeout: 10000 });
