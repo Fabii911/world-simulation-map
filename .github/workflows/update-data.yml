@@ -1,4 +1,4 @@
-# Hält die Daten aktuell: ruft monatlich die offenen Schnittstellen von Weltbank und Our World in Data ab,
+# Hält die Daten aktuell: ruft monatlich die offenen Schnittstellen von Weltbank, Our World in Data und Atlas of Economic Complexity ab,
 # prüft die Daten und committet nur, wenn sich etwas geändert hat und alle Prüfungen bestehen.
 name: Daten aktualisieren
 
@@ -31,6 +31,9 @@ jobs:
       - name: Our World in Data abrufen
         run: node scripts/fetch-owid.mjs
 
+      - name: Handelsdaten (Atlas of Economic Complexity) abrufen
+        run: node scripts/fetch-atlas.mjs
+
       - name: Daten prüfen
         run: node scripts/validate-data.mjs
 
@@ -46,5 +49,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/series
-          git commit -m "Daten aktualisiert (Weltbank, Our World in Data) $(date -u +%Y-%m-%d)"
+          git commit -m "Daten aktualisiert (Weltbank, Our World in Data, Atlas) $(date -u +%Y-%m-%d)"
           git push

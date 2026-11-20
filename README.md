@@ -24,6 +24,7 @@ Das Projekt verbindet drei Dinge:
 |---|---|
 | **Weltkarte** | 25 Kennzahlen je Land und Jahr seit 1990 (Wirtschaft, Abhängigkeiten, Politik, Klima, Biodiversität). Länderprofil mit Zeitreihen, Länder-Typ und Donut |
 | **Diagnose** | Privater Konsum gegen Leistungsbilanzsaldo, animiert über die Jahre. Ordnet Länder Typen zu, z. B. „Nachfrageschwäche wird exportiert“ oder „Defizit mit hohem Konsum“ |
+| **Handelsdruck** | Druckmatrix: Welches Land steht bei welchem Gut unter Konkurrenzdruck durch China, und wie verschiebt sich das über die Zeit (2000 bis heute)? Dazu Exportkorb je Land und Weltmarktanteile im Vergleich mit China |
 | **Wirkungsnetz** | 50 Größen, 83 Wirkungen, 11 Rückkopplungsschleifen. Jede Wirkung verweist auf die Aussagen, die sie begründen |
 | **Simulation** | Hebel setzen (z. B. „China baut den Sozialstaat aus“, „Weltweiter Protektionismus“) und sehen, wie sich die Wirkung durch das Netz ausbreitet |
 | **Zeitleiste** | Ereignisse von 1906 bis heute, verknüpft mit dem Netz, inklusive historischer Vergleichspunkte (1914, 1930er) |
@@ -43,6 +44,7 @@ Das Projekt verbindet drei Dinge:
 |---|---|---|---|
 | [Weltbank, World Development Indicators](https://data.worldbank.org) | CC BY 4.0 | Leistungsbilanz, Konsum, Ersparnis, Investitionen, Rohstoffrenten, Inflation, Arbeitslosigkeit u. a. | monatlich automatisch |
 | [Our World in Data](https://ourworldindata.org) | CC BY 4.0 | CO₂ (Global Carbon Project), Erneuerbare (Ember), Demokratie (V-Dem), Militärausgaben (SIPRI), Ungleichheit (WID), Korruption (Transparency International), Lohnquote (ILO), Rote Liste (IUCN), Waldverlust (Global Forest Watch), Agrarfläche (FAO) | monatlich automatisch |
+| [Atlas of Economic Complexity, Harvard Growth Lab](https://atlas.hks.harvard.edu) (doi:10.7910/DVN/T4CHWJ) | CC0 | Warenexporte nach Land, Gütergruppe (HS-Kapitel) und Jahr | monatlich automatisch |
 | [Fanning u. a. 2022, Universität Leeds](https://goodlife.leeds.ac.uk/download-data/) | Zitierpflicht | Donut: soziale Mindeststandards und planetare Grenzen je Land (1992–2015) | manuell bei neuer Version |
 | [Natural Earth](https://www.naturalearthdata.com) über world-atlas | gemeinfrei / ISC | Ländergrenzen | statisch |
 
@@ -56,7 +58,7 @@ Vollständiges Verzeichnis: [`docs/quellen.md`](docs/quellen.md).
 Die Daten werden über die öffentlichen Schnittstellen der Quellen bezogen und **monatlich automatisch aktualisiert**
 (GitHub Actions, [`.github/workflows/update-data.yml`](.github/workflows/update-data.yml)):
 
-1. Kennzahlen bei Weltbank und Our World in Data abrufen
+1. Kennzahlen bei Weltbank, Our World in Data und dem Atlas of Economic Complexity abrufen
 2. Daten auf Konsistenz prüfen (`npm run validate`) und nach versehentlich enthaltenen Geheimnissen suchen (`npm run check-secrets`)
 3. Nur wenn sich etwas geändert hat und alle Prüfungen bestehen: Commit auf `main`. GitHub Pages veröffentlicht automatisch.
 
@@ -84,6 +86,10 @@ npm run fetch:worldbank
 
 ```bash
 npm run fetch:owid
+```
+
+```bash
+npm run fetch:atlas
 ```
 
 Donut-Daten (Excel-Datei der Universität Leeds, benötigt `openpyxl`):
