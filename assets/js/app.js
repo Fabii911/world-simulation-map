@@ -8,8 +8,9 @@ import { initDiagnose, focusCountry } from './diagnose.js';
 import { initSimulation } from './simulation.js';
 import { initPressure, focusPressureCountry } from './pressure.js';
 import { initChains, showChain } from './chains.js';
+import { initPerspective, setPerspective } from './perspective.js';
 
-const VIEWS = ['karte', 'diagnose', 'druck', 'netz', 'ketten', 'sim', 'zeit', 'fakten', 'info'];
+const VIEWS = ['karte', 'diagnose', 'druck', 'sicht', 'netz', 'ketten', 'sim', 'zeit', 'fakten', 'info'];
 let data = null;
 let graphReady = false;
 let mapReady = null;
@@ -17,6 +18,7 @@ let diagReady = null;
 let simReady = false;
 let pressureReady = null;
 let chainsReady = null;
+let perspectiveReady = null;
 
 function parseHash() {
   const [view, arg] = location.hash.replace(/^#/, '').split('/');
@@ -49,6 +51,11 @@ async function route() {
     pressureReady ||= initPressure().catch((e) => seriesError(e, 'pr-matrix'));
     await pressureReady;
     if (arg) focusPressureCountry(arg);
+  }
+  if (view === 'sicht') {
+    perspectiveReady ||= initPerspective(data).catch((e) => seriesError(e, 'pv-profile'));
+    await perspectiveReady;
+    if (arg) setPerspective(arg);
   }
   if (view === 'ketten') {
     chainsReady ||= initChains(data).catch((e) => { document.getElementById('ch-main').innerHTML = `<p>Ketten konnten nicht geladen werden (${e.message}).</p>`; });

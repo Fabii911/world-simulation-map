@@ -186,7 +186,7 @@ export function selectCountry(iso, animate = true) {
     <h3>Kennzahlen im Zeitverlauf</h3>
     <div class="sparks">${PROFILE.filter(([id]) => S.wb.values[id]).map(([id, label, unit]) => sparkHtml(iso, id, label, unit)).join('')}</div>
     ${donutHtml(iso)}
-    <p><a href="#diagnose/${iso}">In der Diagnose-Grafik zeigen</a></p>`;
+    <p><a href="#diagnose/${iso}">In der Diagnose-Grafik zeigen</a> · <a href="#sicht/${iso}">Aus Sicht von ${esc(c.name)}</a> · <a href="#druck/${iso}">Handelsdruck</a></p>`;
   $('map-panel').querySelectorAll('svg.spark').forEach((el) => drawSpark(el, iso, el.dataset.ind));
   const dn = $('map-panel').querySelector('svg.donut');
   if (dn) drawDonut(dn, iso);

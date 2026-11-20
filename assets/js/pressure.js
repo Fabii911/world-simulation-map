@@ -256,7 +256,7 @@ function renderProfile(R = compute(state.t0, state.t1)) {
   if (!row) { box.innerHTML = '<p class="muted">Für dieses Land liegen keine Handelsdaten vor.</p>'; return; }
   const contribs = Object.entries(row.cells).sort((a, b) => b[1].contrib - a[1].contrib);
   const relief = contribs.filter(([, c]) => c.contrib < 0).slice(-3).reverse();
-  box.innerHTML = `<h2>${esc(name(iso))}: Exportkorb ${state.t1}</h2>
+  box.innerHTML = `<h2>${esc(name(iso))}: Exportkorb ${state.t1} <a class="pr-link" href="#sicht/${iso}">Aus Sicht von ${esc(name(iso))} →</a></h2>
     <p>Warenexporte ${state.t0}: ${fmt(row.tot0 / 1000)} Mrd. USD → ${state.t1}: <b>${fmt(row.tot1 / 1000)} Mrd. USD</b> ·
       Druck durch China: <b>${row.total >= 0 ? '+' : '−'}${fmt(Math.abs(row.total))} Prozentpunkte</b>
       (Rang ${[...R.rows].sort((a, b) => b.total - a.total).findIndex((r) => r.iso === iso) + 1} von ${R.rows.length})</p>

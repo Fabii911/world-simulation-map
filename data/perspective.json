@@ -1,0 +1,206 @@
+{
+ "meta": {
+  "note": "Kanäle, über die die globalen Mechanismen ein Land treffen. Jeder Kanal hat eine Kennzahl; die Betroffenheit ist das Perzentil des Landes unter allen Ländern mit Daten (100 = am stärksten betroffen).",
+  "pressure_period": [
+   2019,
+   null
+  ]
+ },
+ "channels": [
+  {
+   "id": "china_pressure",
+   "name": "Konkurrenzdruck durch China",
+   "mechanism": "M1",
+   "source": {
+    "type": "trade_pressure"
+   },
+   "direction": "high",
+   "unit": "Pp.",
+   "text": "China gewinnt Weltmarktanteile in den Gütern, die das Land exportiert (seit 2019).",
+   "nodes": [
+    "CN_EXP",
+    "EU_IND",
+    "DE_AUTO"
+   ],
+   "chains": [
+    "china-auto",
+    "zollspirale"
+   ]
+  },
+  {
+   "id": "auto_share",
+   "name": "Fahrzeuganteil am Export",
+   "mechanism": "M1",
+   "source": {
+    "type": "trade_sector_share",
+    "sector": 6
+   },
+   "direction": "high",
+   "unit": "% Export",
+   "text": "Je größer der Anteil von Fahrzeugen am Export, desto stärker trifft der Wettbewerb bei E-Autos.",
+   "nodes": [
+    "DE_AUTO",
+    "DE_REG"
+   ],
+   "chains": [
+    "china-auto",
+    "de-ueberschuss"
+   ]
+  },
+  {
+   "id": "export_dep",
+   "name": "Exportabhängigkeit",
+   "mechanism": "M2",
+   "source": {
+    "type": "series",
+    "ind": "exports_gdp"
+   },
+   "direction": "high",
+   "unit": "% BIP",
+   "text": "Exportstarke Länder trifft eine Zoll- und Umlenkungsspirale besonders.",
+   "nodes": [
+    "PROT",
+    "DIVERT",
+    "INTER"
+   ],
+   "chains": [
+    "zollspirale"
+   ]
+  },
+  {
+   "id": "surplus",
+   "name": "Exportüberschuss",
+   "mechanism": "M1",
+   "source": {
+    "type": "series",
+    "ind": "ca_gdp"
+   },
+   "direction": "high",
+   "unit": "% BIP",
+   "text": "Länder mit hohem Überschuss sind Ziel von Zöllen der Defizitländer (Muster USA 2025).",
+   "nodes": [
+    "DE_SUR",
+    "DEFC",
+    "PROT"
+   ],
+   "chains": [
+    "de-ueberschuss"
+   ]
+  },
+  {
+   "id": "energy_imp",
+   "name": "Energieimporte",
+   "mechanism": "M2",
+   "source": {
+    "type": "series",
+    "ind": "energy_imp"
+   },
+   "direction": "high",
+   "unit": "% Verbrauch",
+   "text": "Wer Energie importiert, ist erpressbar (Gas aus Russland bis 2022).",
+   "nodes": [
+    "INTER",
+    "RES"
+   ],
+   "chains": [
+    "rohstoffe"
+   ]
+  },
+  {
+   "id": "milex",
+   "name": "Rüstung und Sicherheitslage",
+   "mechanism": "M2",
+   "source": {
+    "type": "series",
+    "ind": "milex"
+   },
+   "direction": "high",
+   "unit": "% BIP",
+   "text": "Hohe Militärausgaben zeigen Bedrohungswahrnehmung und binden Mittel (Sicherheitsdilemma).",
+   "nodes": [
+    "EU_DEF",
+    "EU_DET",
+    "RU_AGG"
+   ],
+   "chains": [
+    "russland"
+   ]
+  },
+  {
+   "id": "youth_unemp",
+   "name": "Jugendarbeitslosigkeit",
+   "mechanism": "M1",
+   "source": {
+    "type": "series",
+    "ind": "youth_unemp"
+   },
+   "direction": "high",
+   "unit": "%",
+   "text": "Hohe Jugendarbeitslosigkeit ist ein Frühwarnzeichen für Legitimitätsverlust und Populismus.",
+   "nodes": [
+    "NAT",
+    "CN_LEGIT"
+   ],
+   "chains": []
+  },
+  {
+   "id": "democracy",
+   "name": "Schwache demokratische Kontrolle",
+   "mechanism": "M3",
+   "source": {
+    "type": "series",
+    "ind": "vdem_ldi"
+   },
+   "direction": "low",
+   "unit": "0–1",
+   "text": "Wo Macht schwach kontrolliert wird, setzen sich Konzern- und Sicherheitseliten leichter durch.",
+   "nodes": [
+    "STATE",
+    "PLAT"
+   ],
+   "chains": [
+    "technofeudalismus"
+   ]
+  },
+  {
+   "id": "co2",
+   "name": "CO₂ im Konsum",
+   "mechanism": "M4",
+   "source": {
+    "type": "series",
+    "ind": "co2_cons"
+   },
+   "direction": "high",
+   "unit": "t/Kopf",
+   "text": "Konsumbasierte Emissionen pro Kopf, einschließlich der Emissionen in importierten Gütern.",
+   "nodes": [
+    "EMIS",
+    "GROW"
+   ],
+   "chains": [
+    "ki",
+    "lausitz"
+   ]
+  },
+  {
+   "id": "biodiv",
+   "name": "Gefährdung der Artenvielfalt",
+   "mechanism": "M4",
+   "source": {
+    "type": "series",
+    "ind": "rli"
+   },
+   "direction": "low",
+   "unit": "RLI 0–1",
+   "text": "Je niedriger der Rote-Liste-Index, desto höher das Aussterberisiko der heimischen Arten.",
+   "nodes": [
+    "BIO",
+    "LAND",
+    "RES"
+   ],
+   "chains": [
+    "biodiversitaet"
+   ]
+  }
+ ]
+}
