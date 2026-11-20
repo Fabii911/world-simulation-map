@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Simulation Map – Weltlage im Zusammenhang</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">World Simulation Map <span class="muted">Weltlage im Zusammenhang</span></div>
+    <nav class="tabs" role="tablist">
+      <a href="#karte" role="tab" data-view="karte">Weltkarte</a>
+      <a href="#diagnose" role="tab" data-view="diagnose">Diagnose</a>
+      <a href="#netz" role="tab" data-view="netz">Wirkungsnetz</a>
+      <a href="#sim" role="tab" data-view="sim">Simulation</a>
+      <a href="#zeit" role="tab" data-view="zeit">Zeitleiste</a>
+      <a href="#fakten" role="tab" data-view="fakten">Faktencheck</a>
+      <a href="#info" role="tab" data-view="info">Methode</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Weltkarte -->
+    <section id="view-karte" class="view" hidden>
+      <div class="toolbar">
+        <select id="map-ind" aria-label="Kennzahl wählen"></select>
+        <label class="year-ctl">Jahr
+          <input id="map-year" type="range" min="1990" max="2025" step="1" value="2025" aria-label="Jahr">
+          <output id="map-year-out">2025</output>
+        </label>
+      </div>
+      <p id="map-reading" class="reading"></p>
+      <div class="split">
+        <div id="worldmap" class="mapbox" aria-label="Weltkarte"></div>
+        <aside id="map-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <div id="map-legend" class="legend"></div>
+      <details class="table-view">
+        <summary>Werte als Tabelle</summary>
+        <div id="map-table"></div>
+      </details>
+    </section>
+
+    <!-- Diagnose -->
+    <section id="view-diagnose" class="view" hidden>
+      <div class="toolbar">
+        <label class="year-ctl">Jahr
+          <input id="dg-year" type="range" min="1990" max="2025" step="1" value="2025" aria-label="Jahr">
+          <output id="dg-year-out">2025</output>
+        </label>
+        <button id="dg-play" type="button">▶ Abspielen</button>
+        <input id="dg-add" list="dg-countries" type="search" placeholder="Land hervorheben (max. 3) …" aria-label="Land hervorheben">
+        <datalist id="dg-countries"></datalist>
+        <div id="dg-focus" class="chips"></div>
+      </div>
+      <div class="split">
+        <div id="diagnose" class="mapbox" aria-label="Diagnose-Grafik"></div>
+        <aside id="dg-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <details class="table-view">
+        <summary>Werte als Tabelle</summary>
+        <div id="dg-table"></div>
+      </details>
+    </section>
+
+    <!-- Wirkungsnetz -->
+    <section id="view-netz" class="view" hidden>
+      <div class="toolbar">
+        <input id="net-search" type="search" placeholder="Größe suchen …" aria-label="Größe suchen">
+        <select id="net-loop" aria-label="Rückkopplungsschleife hervorheben">
+          <option value="">Schleife hervorheben …</option>
+        </select>
+        <label class="year-ctl">Stand
+          <input id="net-year" type="range" min="1990" max="2026" step="1" value="2026" aria-label="Jahr">
+          <output id="net-year-out">2026</output>
+        </label>
+        <button id="net-reset" type="button">Zurücksetzen</button>
+      </div>
+      <div class="domain-filter" id="domain-filter" aria-label="Themen filtern"></div>
+      <div class="split">
+        <div id="cy" class="cy" aria-label="Wirkungsnetz"></div>
+        <aside id="net-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <div class="legend" id="net-legend"></div>
+    </section>
+
+    <!-- Simulation -->
+    <section id="view-sim" class="view" hidden>
+      <div class="notice">Die Simulation zeigt <b>Richtungen und Zielkonflikte</b>, keine Prognosen in Zahlen. Sie beruht auf den geschätzten Gewichten im Wirkungsnetz (Fuzzy Cognitive Map); Verzögerungen und Mengen sind nicht modelliert.</div>
+      <div class="toolbar"><span class="muted">Szenarien:</span></div>
+      <div id="sim-presets" class="chips"></div>
+      <div class="toolbar">
+        <div id="sim-levers" class="levers"></div>
+        <select id="sim-add" aria-label="Hebel hinzufügen"></select>
+      </div>
+      <p id="sim-status" class="reading"></p>
+      <div class="split">
+        <div id="sim-chart" class="simbox" aria-label="Ergebnis der Simulation"></div>
+        <aside id="sim-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <details class="table-view">
+        <summary>Ergebnis als Tabelle</summary>
+        <div id="sim-table"></div>
+      </details>
+    </section>
+
+    <!-- Zeitleiste -->
+    <section id="view-zeit" class="view" hidden>
+      <div class="toolbar">
+        <span class="muted">Ziehen zum Verschieben, Mausrad zum Zoomen. Klick auf ein Ereignis zeigt Details.</span>
+        <button id="tl-reset" type="button">Ganzer Zeitraum</button>
+        <button id="tl-recent" type="button">1990 – heute</button>
+      </div>
+      <div class="split">
+        <div id="timeline" class="timeline" aria-label="Zeitleiste"></div>
+        <aside id="tl-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <details class="table-view">
+        <summary>Ereignisse als Tabelle</summary>
+        <div id="tl-table"></div>
+      </details>
+    </section>
+
+    <!-- Faktencheck -->
+    <section id="view-fakten" class="view" hidden>
+      <div class="toolbar">
+        <input id="fc-search" type="search" placeholder="Aussage suchen …" aria-label="Aussage suchen">
+        <div id="fc-filter" class="chips" aria-label="Nach Bewertung filtern"></div>
+      </div>
+      <div id="fc-list"></div>
+    </section>
+
+    <!-- Methode -->
+    <section id="view-info" class="view prose" hidden>
+      <h1>Über diese Karte</h1>
+      <p>World Simulation Map verbindet Geopolitik, Weltwirtschaft, Machtkonzentration, Klima und Biodiversität in einem gemeinsamen Modell.
+        Verbreitete Thesen zur Weltlage werden einzeln geprüft und mit Literatur belegt, zu einem Netz aus Ursachen und Wirkungen verdichtet
+        und mit öffentlichen Daten verknüpft, die monatlich automatisch aktualisiert werden.</p>
+      <p>Die geprüften Ausgangsthesen gehen u. a. auf Ulrike Herrmann (<i>Das Ende des Kapitalismus</i>, 2022), Ulrike Guérot (<i>Warum Europa eine Republik werden muss!</i>, 2016)
+        und Katrin Böhning-Gaese (<i>Vom Verschwinden der Arten</i>, 2023) zurück. Geprüft wird jeweils die Sache, nicht ob eine Person etwas wörtlich so gesagt hat.
+        Das vollständige Literaturverzeichnis steht in <code>docs/quellen.md</code>.</p>
+      <h2>Wie man das Netz liest</h2>
+      <ul>
+        <li><strong>Knoten</strong> sind Größen, die steigen oder fallen können (z. B. „Privatkonsum China“), keine Themen.</li>
+        <li><strong>Pfeil +</strong>: mehr A führt zu mehr B. <strong>Pfeil −</strong>: mehr A führt zu weniger B.</li>
+        <li><strong>Gepunktet</strong>: Wirkung mit Verzögerung. <strong>Strichstärke</strong>: wie sicher die Wirkung belegt ist.</li>
+        <li><strong>Schleifen</strong>: R = verstärkend (Teufelskreis), B = ausgleichend.</li>
+      </ul>
+      <h2>Wie die Simulation rechnet</h2>
+      <p>Jede Größe bekommt einen Wert zwischen −1 (stark gesunken) und +1 (stark gestiegen). Gesetzte Hebel bleiben fest.
+        In jedem Schritt summiert jede andere Größe die Werte ihrer Ursachen, gewichtet mit Pfeilgewicht × Sicherheit (unsichere Wirkungen tragen weniger weit), und begrenzt das Ergebnis mit tanh.
+        Das wiederholt sich, bis sich nichts mehr ändert. Verstärkende Schleifen können ein vollständiges Einschwingen verhindern; das wird angezeigt.</p>
+      <h2>Bewertungsskala</h2>
+      <div id="info-ratings"></div>
+      <h2>Grenzen</h2>
+      <ul>
+        <li>Gewichte und Konfidenzen sind begründete Schätzungen, keine Messwerte.</li>
+        <li>Zahlen beruhen auf dem Wissensstand bis Mitte 2026; Ereignisse sind als „zu belegen“ markiert, bis sie gegen Primärquellen geprüft sind.</li>
+        <li>Wenn zwei Größen sich gleichzeitig bewegen, ist das kein Beweis für Kausalität. Als belegt gilt nur, was eine geprüfte Aussage stützt.</li>
+      </ul>
+      <h2>Datenquellen</h2>
+      <p>Die Daten werden über die öffentlichen Schnittstellen der Quellen bezogen und monatlich automatisch aktualisiert.</p>
+      <div id="info-sources"></div>
+      <p>Ausführliche Dokumentation und Literaturverzeichnis: Ordner <code>docs/</code> im Repository (<code>docs/quellen.md</code>).</p>
+    </section>
+  </main>
+
+  <script src="assets/vendor/cytoscape.min.js"></script>
+  <script src="assets/vendor/d3.min.js"></script>
+  <script src="assets/vendor/topojson-client.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+# Hält die Daten aktuell: ruft monatlich die offenen Schnittstellen von Weltbank und Our World in Data ab,
+# prüft die Daten und committet nur, wenn sich etwas geändert hat und alle Prüfungen bestehen.
+name: Daten aktualisieren
+
+on:
+  schedule:
+    - cron: '17 4 3 * *'   # am 3. jedes Monats, 04:17 UTC
+  workflow_dispatch:        # manuell über den Reiter „Actions“ startbar
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Weltbank abrufen
+        run: node scripts/fetch-worldbank.mjs
+
+      - name: Our World in Data abrufen
+        run: node scripts/fetch-owid.mjs
+
+      - name: Daten prüfen
+        run: node scripts/validate-data.mjs
+
+      - name: Nach Geheimnissen suchen
+        run: node scripts/check-secrets.mjs
+
+      - name: Änderungen committen
+        run: |
+          if git diff --quiet -- data/series; then
+            echo "Keine neuen Daten."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/series
+          git commit -m "Daten aktualisiert (Weltbank, Our World in Data) $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,17 @@
+{
+  "name": "world-simulation-map",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Weltlage im Zusammenhang: Geopolitik, Weltwirtschaft, Machtkonzentration, Klima und Biodiversität in einem Wirkungsmodell mit offenen Daten",
+  "type": "module",
+  "scripts": {
+    "serve": "node scripts/serve.mjs 8000",
+    "validate": "node scripts/validate-data.mjs",
+    "fetch:worldbank": "node scripts/fetch-worldbank.mjs",
+    "fetch:owid": "node scripts/fetch-owid.mjs",
+    "check-secrets": "node scripts/check-secrets.mjs",
+    "test:ui": "node tests/smoke.cjs",
+    "test": "npm run validate && npm run check-secrets && npm run test:ui"
+  },
+  "license": "UNLICENSED"
+}

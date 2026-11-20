@@ -1,0 +1,711 @@
+{
+ "meta": {
+  "version": "0.1",
+  "dimensions": {
+   "D1": "Wirtschaftliches Gleichgewicht (M1)",
+   "D2": "Abhängigkeiten (M2)",
+   "D3": "Machtkonzentration (M3)",
+   "D4": "Politik & Stabilität",
+   "D5": "Klimakrise (M4)",
+   "D6": "Biodiversität & Ressourcen (M4)",
+   "Synthese": "Donut"
+  },
+  "note": "Codes ohne Wert: Quelle manuell/über eigenes Format laden"
+ },
+ "indicators": [
+  {
+   "id": "ca_gdp",
+   "name": "Leistungsbilanzsaldo",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "BN.CAB.XOKA.GD.ZS",
+   "model_nodes": [
+    "DE_SUR",
+    "CN_EXP",
+    "DEFC"
+   ],
+   "reading": "+ = Überschuss (exportiert Nachfrageproblem?), − = Defizit"
+  },
+  {
+   "id": "hh_cons",
+   "name": "Privater Konsum",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "NE.CON.PRVT.ZS",
+   "model_nodes": [
+    "CN_CON",
+    "DE_DEMAND"
+   ],
+   "reading": "niedrig = eigene Nachfrage trägt Produktion nicht"
+  },
+  {
+   "id": "hh_saving",
+   "name": "Sparquote Haushalte",
+   "dimension": "D1",
+   "unit": "% verfügb. Einkommen",
+   "source": "OECD / IWF / NBS China",
+   "source_code": "",
+   "model_nodes": [
+    "CN_SOC",
+    "CN_CON"
+   ],
+   "reading": "hoch + schwache Absicherung = Vorsorgesparen"
+  },
+  {
+   "id": "gross_saving",
+   "name": "Bruttoersparnis (Haushalte, Firmen, Staat)",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "NY.GNS.ICTR.ZS",
+   "model_nodes": [
+    "CN_CON",
+    "DE_DEMAND"
+   ],
+   "reading": "Ersparnis minus Investitionen = Leistungsbilanzsaldo; weltweit vergleichbarer Ersatz für die Haushaltssparquote"
+  },
+  {
+   "id": "labour_share",
+   "name": "Lohnquote",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "ILO (SDG 10.4.1) via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "LABOR",
+    "DE_DEMAND"
+   ],
+   "reading": "sinkend = Wachstum kommt weniger bei Beschäftigten an",
+   "owid_slug": "labor-share-of-gdp"
+  },
+  {
+   "id": "real_wage_g",
+   "name": "Reallohnwachstum",
+   "dimension": "D1",
+   "unit": "% p. a.",
+   "source": "ILO Global Wage Report / Destatis",
+   "source_code": "",
+   "model_nodes": [
+    "DE_DEMAND"
+   ],
+   "reading": "Stagnation bei Wachstum = Verteilung zulasten Löhne"
+  },
+  {
+   "id": "exports_gdp",
+   "name": "Exporte",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "NE.EXP.GNFS.ZS",
+   "model_nodes": [],
+   "reading": "nur Offenheit, KEIN Ungleichgewichtsmaß"
+  },
+  {
+   "id": "gcf_gdp",
+   "name": "Bruttoinvestitionen",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "NE.GDI.TOTL.ZS",
+   "model_nodes": [
+    "CN_SUB",
+    "DE_DEMAND"
+   ],
+   "reading": "sehr hoch (CN) = Überinvestition; niedrig = Investitionsschwäche"
+  },
+  {
+   "id": "resource_rents",
+   "name": "Rohstoffrenten (Öl, Gas, Mineralien, Wald)",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "Weltbank",
+   "source_code": "NY.GDP.TOTL.RT.ZS",
+   "model_nodes": [
+    "RU_CIV"
+   ],
+   "reading": "hoch = Wirtschaft lebt von Rohstoffen; erklärt Überschüsse vom Rohstoff-Typ"
+  },
+  {
+   "id": "inflation",
+   "name": "Inflation",
+   "dimension": "D1",
+   "unit": "% p. a.",
+   "source": "Weltbank",
+   "source_code": "FP.CPI.TOTL.ZG",
+   "model_nodes": [
+    "RU_INF",
+    "CN_DEF"
+   ],
+   "reading": "hoch = Überhitzung; ≤0 = Deflation"
+  },
+  {
+   "id": "youth_unemp",
+   "name": "Jugendarbeitslosigkeit",
+   "dimension": "D1",
+   "unit": "%",
+   "source": "Weltbank/ILO",
+   "source_code": "SL.UEM.1524.ZS",
+   "model_nodes": [
+    "CN_DEF",
+    "CN_LEGIT"
+   ],
+   "reading": "Frühwarnung soziale Spannung"
+  },
+  {
+   "id": "niip",
+   "name": "Nettoauslandsvermögensposition",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "IWF",
+   "source_code": "",
+   "model_nodes": [
+    "DEFC",
+    "DE_SUR"
+   ],
+   "reading": "wer schuldet wem"
+  },
+  {
+   "id": "social_exp",
+   "name": "Sozialausgaben",
+   "dimension": "D1",
+   "unit": "% BIP",
+   "source": "OECD SOCX / ILO",
+   "source_code": "",
+   "model_nodes": [
+    "CN_SOC"
+   ],
+   "reading": "niedrig = privates Vorsorgesparen nötig"
+  },
+  {
+   "id": "pension_cov",
+   "name": "Rentenabdeckung",
+   "dimension": "D1",
+   "unit": "% Bev. über Rentenalter mit Rente",
+   "source": "ILO (SDG 1.3.1)",
+   "source_code": "",
+   "model_nodes": [
+    "CN_SOC"
+   ],
+   "reading": "Lücken = Vorsorgesparen"
+  },
+  {
+   "id": "oop_health",
+   "name": "Gesundheitskosten aus eigener Tasche",
+   "dimension": "D1",
+   "unit": "% Gesundheitsausgaben",
+   "source": "Weltbank/WHO",
+   "source_code": "SH.XPD.OOPC.CH.ZS",
+   "model_nodes": [
+    "CN_SOC"
+   ],
+   "reading": "hoch = Krankheit ist privates Risiko"
+  },
+  {
+   "id": "energy_imp",
+   "name": "Energieimportquote",
+   "dimension": "D2",
+   "unit": "% Energieverbrauch",
+   "source": "Weltbank / Eurostat",
+   "source_code": "EG.IMP.CONS.ZS",
+   "model_nodes": [
+    "INTER"
+   ],
+   "reading": "hoch + wenige Lieferanten = erpressbar"
+  },
+  {
+   "id": "crm_share",
+   "name": "Anteil China an Förderung/Raffination kritischer Rohstoffe",
+   "dimension": "D2",
+   "unit": "%",
+   "source": "IEA Critical Minerals Outlook / USGS",
+   "source_code": "",
+   "model_nodes": [
+    "CN_RAW"
+   ],
+   "reading": "Rohstoffhebel"
+  },
+  {
+   "id": "food_ssr",
+   "name": "Selbstversorgungsgrad Nahrung",
+   "dimension": "D2",
+   "unit": "%",
+   "source": "FAO Food Balance Sheets",
+   "source_code": "",
+   "model_nodes": [
+    "RES"
+   ],
+   "reading": "<100 % + Dünger-/Futterimporte = Krisenrisiko"
+  },
+  {
+   "id": "chip_cap",
+   "name": "Anteil Halbleiter-Fertigungskapazität",
+   "dimension": "D2",
+   "unit": "%",
+   "source": "SIA/BCG, TrendForce",
+   "source_code": "",
+   "model_nodes": [
+    "CHIP_DEP"
+   ],
+   "reading": "Klumpenrisiko Taiwan"
+  },
+  {
+   "id": "cr4_hhi",
+   "name": "Marktkonzentration je Branche (CR4/HHI)",
+   "dimension": "D3",
+   "unit": "Index",
+   "source": "OECD, Eurostat, Kartellbehörden",
+   "source_code": "",
+   "model_nodes": [
+    "CONC"
+   ],
+   "reading": "steigend = weniger Wettbewerb"
+  },
+  {
+   "id": "markups",
+   "name": "Preisaufschläge über Grenzkosten",
+   "dimension": "D3",
+   "unit": "Faktor",
+   "source": "De Loecker/Eeckhout",
+   "source_code": "",
+   "model_nodes": [
+    "CONC",
+    "PLAT"
+   ],
+   "reading": "Preissetzungsmacht"
+  },
+  {
+   "id": "firm_entry",
+   "name": "Gründungsrate",
+   "dimension": "D3",
+   "unit": "% Unternehmen",
+   "source": "OECD / Eurostat",
+   "source_code": "",
+   "model_nodes": [
+    "SME"
+   ],
+   "reading": "sinkend = Dynamikverlust"
+  },
+  {
+   "id": "top10_mcap",
+   "name": "Anteil Top-10 an Börsenwert",
+   "dimension": "D3",
+   "unit": "%",
+   "source": "S&P / MSCI",
+   "source_code": "",
+   "model_nodes": [
+    "AI_BUBBLE",
+    "PLAT"
+   ],
+   "reading": "Klumpenrisiko Finanzmarkt"
+  },
+  {
+   "id": "cloud_share",
+   "name": "Cloud-Marktanteile",
+   "dimension": "D3",
+   "unit": "%",
+   "source": "Synergy Research",
+   "source_code": "",
+   "model_nodes": [
+    "AI_CONC",
+    "PLAT"
+   ],
+   "reading": "Technofeudalismus"
+  },
+  {
+   "id": "lobby",
+   "name": "Lobbyausgaben",
+   "dimension": "D3",
+   "unit": "USD/EUR",
+   "source": "OpenSecrets, EU-Transparenzregister",
+   "source_code": "",
+   "model_nodes": [
+    "PLAT",
+    "STATE"
+   ],
+   "reading": "Wirtschafts- → politische Macht"
+  },
+  {
+   "id": "vdem_ldi",
+   "name": "Liberaler Demokratieindex",
+   "dimension": "D4",
+   "unit": "0–1",
+   "source": "V-Dem via Our World in Data",
+   "source_code": "v2x_libdem",
+   "model_nodes": [
+    "STATE"
+   ],
+   "reading": "sinkend = Machtkontrolle schwindet",
+   "owid_slug": "liberal-democracy-index"
+  },
+  {
+   "id": "populist_vote",
+   "name": "Stimmenanteil populistischer/nationalistischer Parteien",
+   "dimension": "D4",
+   "unit": "%",
+   "source": "PopuList / ParlGov",
+   "source_code": "",
+   "model_nodes": [
+    "NAT"
+   ],
+   "reading": "Schleife R7"
+  },
+  {
+   "id": "gov_trust",
+   "name": "Vertrauen in Regierung",
+   "dimension": "D4",
+   "unit": "%",
+   "source": "OECD Trust Survey",
+   "source_code": "",
+   "model_nodes": [
+    "STATE"
+   ],
+   "reading": "Legitimität"
+  },
+  {
+   "id": "gini",
+   "name": "Gini-Koeffizient",
+   "dimension": "D4",
+   "unit": "0–100",
+   "source": "Weltbank / WID",
+   "source_code": "SI.POV.GINI",
+   "model_nodes": [
+    "LABOR"
+   ],
+   "reading": "Ungleichheit"
+  },
+  {
+   "id": "top10_inc",
+   "name": "Einkommensanteil Top 10 %",
+   "dimension": "D4",
+   "unit": "%",
+   "source": "WID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "LABOR"
+   ],
+   "reading": "wer profitiert vom Wachstum",
+   "owid_slug": "income-share-top-10-before-tax-wid"
+  },
+  {
+   "id": "cpi_corr",
+   "name": "Korruptionswahrnehmung",
+   "dimension": "D4",
+   "unit": "0–100",
+   "source": "Transparency International via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "STATE"
+   ],
+   "reading": "Steuerungsfähigkeit",
+   "owid_slug": "corruption-perception-index"
+  },
+  {
+   "id": "gov_eff",
+   "name": "Regierungseffektivität",
+   "dimension": "D4",
+   "unit": "Index",
+   "source": "Weltbank WGI",
+   "source_code": "",
+   "model_nodes": [
+    "STATE"
+   ],
+   "reading": "Steuerungsfähigkeit"
+  },
+  {
+   "id": "milex",
+   "name": "Militärausgaben",
+   "dimension": "D4",
+   "unit": "% BIP",
+   "source": "SIPRI via Our World in Data",
+   "source_code": "MS.MIL.XPND.GD.ZS",
+   "model_nodes": [
+    "RU_MIL",
+    "EU_DEF"
+   ],
+   "reading": "Wettrüsten / Kriegswirtschaft",
+   "owid_slug": "military-spending-as-a-share-of-gdp-sipri"
+  },
+  {
+   "id": "conflict",
+   "name": "Konfliktereignisse und Opfer",
+   "dimension": "D4",
+   "unit": "Anzahl",
+   "source": "UCDP / ACLED",
+   "source_code": "",
+   "model_nodes": [
+    "RU_AGG",
+    "CN_TWN"
+   ],
+   "reading": "Eskalation"
+  },
+  {
+   "id": "trade_restr",
+   "name": "Neue Handelsbeschränkungen",
+   "dimension": "D4",
+   "unit": "Anzahl",
+   "source": "Global Trade Alert",
+   "source_code": "",
+   "model_nodes": [
+    "PROT"
+   ],
+   "reading": "Protektionismus-Spirale"
+  },
+  {
+   "id": "co2_terr",
+   "name": "CO₂ pro Kopf (territorial)",
+   "dimension": "D5",
+   "unit": "t/Kopf",
+   "source": "Global Carbon Project / OWID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "EMIS"
+   ],
+   "reading": "Emissionen im Land",
+   "owid_slug": "co-emissions-per-capita"
+  },
+  {
+   "id": "co2_cons",
+   "name": "CO₂ pro Kopf (konsumbasiert)",
+   "dimension": "D5",
+   "unit": "t/Kopf",
+   "source": "Global Carbon Project / OWID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "EMIS",
+    "CN_EXP"
+   ],
+   "reading": "Differenz zu territorial = Emissionen im Handel",
+   "owid_slug": "consumption-co2-per-capita"
+  },
+  {
+   "id": "co2_cum",
+   "name": "Kumulierte CO₂-Emissionen seit 1750",
+   "dimension": "D5",
+   "unit": "t",
+   "source": "Global Carbon Project / OWID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "EMIS"
+   ],
+   "reading": "historische Verantwortung",
+   "owid_slug": "cumulative-co2-emissions-region"
+  },
+  {
+   "id": "renew_share",
+   "name": "Anteil Erneuerbare am Strom",
+   "dimension": "D5",
+   "unit": "% Strom",
+   "source": "Ember / OWID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "CLIM"
+   ],
+   "reading": "Entkopplung",
+   "owid_slug": "share-electricity-renewables"
+  },
+  {
+   "id": "co2_int",
+   "name": "CO₂-Intensität BIP",
+   "dimension": "D5",
+   "unit": "kg CO₂ je USD BIP",
+   "source": "OWID via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "EMIS",
+    "GROW"
+   ],
+   "reading": "Entkopplung von Wachstum",
+   "owid_slug": "co2-intensity"
+  },
+  {
+   "id": "fossil_sub",
+   "name": "Subventionen fossile Energien",
+   "dimension": "D5",
+   "unit": "% BIP",
+   "source": "IWF",
+   "source_code": "",
+   "model_nodes": [
+    "CLIM"
+   ],
+   "reading": "Politik gegen eigene Ziele"
+  },
+  {
+   "id": "temp_anom",
+   "name": "Globale Temperaturabweichung",
+   "dimension": "D5",
+   "unit": "°C",
+   "source": "Copernicus / NASA",
+   "source_code": "",
+   "model_nodes": [
+    "EMIS"
+   ],
+   "reading": "Zustand Klimasystem"
+  },
+  {
+   "id": "dc_power",
+   "name": "Stromverbrauch Rechenzentren",
+   "dimension": "D5",
+   "unit": "TWh",
+   "source": "IEA",
+   "source_code": "",
+   "model_nodes": [
+    "AI_ENERGY"
+   ],
+   "reading": "KI-Energiebedarf"
+  },
+  {
+   "id": "lpi",
+   "name": "Living Planet Index",
+   "dimension": "D6",
+   "unit": "Index 1970=1",
+   "source": "WWF/ZSL",
+   "source_code": "",
+   "model_nodes": [
+    "BIO"
+   ],
+   "reading": "Bestandsentwicklung Wildtiere"
+  },
+  {
+   "id": "rli",
+   "name": "Rote-Liste-Index",
+   "dimension": "D6",
+   "unit": "0–1",
+   "source": "IUCN / UN SDG 15.5.1 via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "BIO"
+   ],
+   "reading": "Aussterberisiko",
+   "owid_slug": "red-list-index"
+  },
+  {
+   "id": "bii",
+   "name": "Biodiversity Intactness Index",
+   "dimension": "D6",
+   "unit": "%",
+   "source": "Natural History Museum",
+   "source_code": "",
+   "model_nodes": [
+    "BIO"
+   ],
+   "reading": "Intaktheit"
+  },
+  {
+   "id": "forest_loss",
+   "name": "Verlust an Baumbedeckung",
+   "dimension": "D6",
+   "unit": "ha",
+   "source": "Global Forest Watch via Our World in Data",
+   "source_code": "",
+   "model_nodes": [
+    "LAND",
+    "BIO"
+   ],
+   "reading": "Landnutzungswandel",
+   "owid_slug": "tree-cover-loss"
+  },
+  {
+   "id": "protected",
+   "name": "Schutzgebietsanteil",
+   "dimension": "D6",
+   "unit": "% Fläche",
+   "source": "Weltbank / WDPA",
+   "source_code": "ER.PTD.TOTL.ZS",
+   "model_nodes": [
+    "BIO"
+   ],
+   "reading": "Ziel 30 % bis 2030"
+  },
+  {
+   "id": "eco_fp",
+   "name": "Ökologischer Fußabdruck / Biokapazität",
+   "dimension": "D6",
+   "unit": "gha/Kopf",
+   "source": "Global Footprint Network",
+   "source_code": "",
+   "model_nodes": [
+    "GROW",
+    "LAND"
+   ],
+   "reading": "über Verhältnisse leben"
+  },
+  {
+   "id": "mat_fp",
+   "name": "Materialfußabdruck",
+   "dimension": "D6",
+   "unit": "t/Kopf",
+   "source": "UN SDG 8.4.1",
+   "source_code": "",
+   "model_nodes": [
+    "GROW"
+   ],
+   "reading": "Ressourcenverbrauch"
+  },
+  {
+   "id": "n_surplus",
+   "name": "Stickstoffüberschuss",
+   "dimension": "D6",
+   "unit": "kg/ha",
+   "source": "OECD / FAO",
+   "source_code": "",
+   "model_nodes": [
+    "LAND"
+   ],
+   "reading": "Intensität Landwirtschaft"
+  },
+  {
+   "id": "bio_imp",
+   "name": "Importierte Entwaldung / Biodiversitäts-Fußabdruck",
+   "dimension": "D6",
+   "unit": "Index",
+   "source": "Studien (z. B. Lenzen 2012), Trase",
+   "source_code": "",
+   "model_nodes": [
+    "INTER",
+    "BIO"
+   ],
+   "reading": "Konsum zerstört Natur anderswo"
+  },
+  {
+   "id": "ag_land",
+   "name": "Agrarfläche",
+   "dimension": "D6",
+   "unit": "% Landfläche",
+   "source": "FAO via Our World in Data",
+   "source_code": "",
+   "owid_slug": "share-of-land-area-used-for-agriculture",
+   "model_nodes": [
+    "LAND"
+   ],
+   "reading": "hoch = viel Fläche intensiv genutzt, wenig Raum für Natur"
+  },
+  {
+   "id": "donut_social",
+   "name": "Donut: erreichte soziale Ziele",
+   "dimension": "Synthese",
+   "unit": "Anzahl",
+   "source": "Universität Leeds (Fanning u. a. 2022)",
+   "source_code": "",
+   "model_nodes": [
+    "LABOR"
+   ],
+   "reading": "Anzahl von 11 Mindeststandards (Fanning u. a. 2022), die erreicht sind"
+  },
+  {
+   "id": "donut_eco",
+   "name": "Donut: überschrittene planetare Grenzen",
+   "dimension": "Synthese",
+   "unit": "Anzahl",
+   "source": "Universität Leeds (Fanning u. a. 2022)",
+   "source_code": "",
+   "model_nodes": [
+    "GROW",
+    "EMIS",
+    "BIO"
+   ],
+   "reading": "Anzahl von 6 pro-Kopf-Grenzen (Fanning u. a. 2022), die überschritten sind"
+  }
+ ]
+}

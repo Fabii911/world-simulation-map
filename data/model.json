@@ -1,0 +1,1664 @@
+{
+ "meta": {
+  "version": "0.4",
+  "date": "2026-11-20",
+  "ratings": {
+   "supported": "✅",
+   "partial": "🟡",
+   "contested": "🟠",
+   "false": "❌",
+   "unverifiable": "❓"
+  },
+  "polarity": "+ gleichgerichtet, - gegengerichtet",
+  "weight": "FCM-Gewicht -1..1 (vorläufige Schätzung)",
+  "confidence": "0..1 Sicherheit der Kante"
+ },
+ "sources": [
+  {
+   "id": "herrmann",
+   "name": "Ulrike Herrmann",
+   "role": "Wirtschaftsjournalistin (taz)"
+  },
+  {
+   "id": "guerot",
+   "name": "Ulrike Guérot",
+   "role": "Politikwissenschaftlerin (umstritten)"
+  },
+  {
+   "id": "boehning-gaese",
+   "name": "Katrin Böhning-Gaese",
+   "role": "Biodiversitätsforscherin"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "RU_IDEO",
+   "label": "Imperiale Ideologie / Regimesicherung",
+   "domain": "russland",
+   "description": "Imperiales Geschichtsbild und Sicherung des Regimes Putin – laut Forschung Hauptmotiv des Angriffs 2022."
+  },
+  {
+   "id": "RU_MIL",
+   "label": "Russ. Militärausgaben",
+   "domain": "russland",
+   "description": "Anteil der Rüstungs- und Sicherheitsausgaben (ca. 6–8 % des BIP, rund 40 % des Haushalts)."
+  },
+  {
+   "id": "RU_DEP",
+   "label": "Abhängigkeit der RU-Wirtschaft vom Krieg",
+   "domain": "russland",
+   "description": "Wie sehr Jobs, Regionen und Einkommen an Rüstung und Sold hängen – Kosten eines Friedens."
+  },
+  {
+   "id": "RU_CIV",
+   "label": "Russ. Zivilwirtschaft",
+   "domain": "russland",
+   "description": "Leistungsfähigkeit der zivilen Wirtschaft (Konsumgüter, Dienstleistungen, Investitionen)."
+  },
+  {
+   "id": "RU_INF",
+   "label": "Russ. Inflation",
+   "domain": "russland",
+   "description": "Teuerung in Russland (2024 ca. 9–10 %), Folge der Überhitzung durch Kriegsnachfrage."
+  },
+  {
+   "id": "RU_AGG",
+   "label": "Risiko weiterer russ. Aggression",
+   "domain": "russland",
+   "description": "Wahrscheinlichkeit weiterer militärischer Aggression Russlands."
+  },
+  {
+   "id": "EU_DEF",
+   "label": "EU/DE-Verteidigungsausgaben",
+   "domain": "europa",
+   "description": "Verteidigungsausgaben Europas und Deutschlands."
+  },
+  {
+   "id": "EU_DET",
+   "label": "Abschreckung",
+   "domain": "europa",
+   "description": "Glaubwürdige Abschreckung: Fähigkeit, einen Angriff unattraktiv zu machen."
+  },
+  {
+   "id": "EU_IND",
+   "label": "Industrielle Basis EU/DE",
+   "domain": "europa",
+   "description": "Industrielle Basis der EU und Deutschlands (Wertschöpfung, Jobs, Know-how)."
+  },
+  {
+   "id": "EU_TD",
+   "label": "EU-Handelsschutz (Ausgleichszölle, FSR)",
+   "domain": "europa",
+   "description": "Handelsschutz: Ausgleichs- und Antidumpingzölle, Subventionsverordnung (FSR)."
+  },
+  {
+   "id": "EU_DR",
+   "label": "De-Risking (Diversifizierung, Recycling, Reserven)",
+   "domain": "europa",
+   "description": "De-Risking: Lieferanten diversifizieren, Recycling, strategische Reserven."
+  },
+  {
+   "id": "EU_INT",
+   "label": "EU-Integrationstiefe / Verhandlungsmacht",
+   "domain": "europa",
+   "description": "Wie geschlossen die EU handelt – Quelle ihrer Verhandlungsmacht (450 Mio. Menschen)."
+  },
+  {
+   "id": "NAT",
+   "label": "Nationalistische Politik / Renationalisierung",
+   "domain": "politik",
+   "description": "Politik der Renationalisierung und Abschottung."
+  },
+  {
+   "id": "DE_SUR",
+   "label": "Deutscher Exportüberschuss",
+   "domain": "europa",
+   "description": "Deutscher Leistungsbilanzüberschuss (Höhepunkt 2015 ca. 8–9 % des BIP)."
+  },
+  {
+   "id": "CN_SOC",
+   "label": "Soziale Sicherung China",
+   "domain": "china",
+   "description": "Soziale Sicherung in China: Rente, Gesundheit, Arbeitslosenversicherung, Hukou."
+  },
+  {
+   "id": "CN_CON",
+   "label": "Privatkonsum China",
+   "domain": "china",
+   "description": "Privater Konsum in China (ca. 39 % des BIP – sehr niedrig)."
+  },
+  {
+   "id": "CN_SUB",
+   "label": "Investition / Subvention China",
+   "domain": "china",
+   "description": "Staatlich gelenkte Investitionen und Subventionen in Industrie."
+  },
+  {
+   "id": "CN_OVR",
+   "label": "Überkapazität China",
+   "domain": "china",
+   "description": "Überkapazität: mehr Produktion, als im Inland gekauft werden kann."
+  },
+  {
+   "id": "CN_EXP",
+   "label": "Chinesischer Exportüberschuss",
+   "domain": "china",
+   "description": "Chinesischer Exportüberschuss (Warenhandel 2025 über 1 Billion USD)."
+  },
+  {
+   "id": "CN_DEF",
+   "label": "Deflation / Arbeitslosigkeit China",
+   "domain": "china",
+   "description": "Deflation, Pleiten und Arbeitslosigkeit als Folge von Überangebot."
+  },
+  {
+   "id": "CN_RAW",
+   "label": "Chinesischer Rohstoff-Hebel",
+   "domain": "china",
+   "description": "Chinas Kontrolle über kritische Rohstoffe (seltene Erden ca. 90 % der Verarbeitung)."
+  },
+  {
+   "id": "CN_TWN",
+   "label": "Taiwan-Konfliktrisiko",
+   "domain": "china",
+   "description": "Risiko eines militärischen Konflikts um Taiwan."
+  },
+  {
+   "id": "CONC",
+   "label": "Marktkonzentration",
+   "domain": "marktmacht",
+   "description": "Marktkonzentration: Anteil weniger Firmen an einem Markt."
+  },
+  {
+   "id": "SME",
+   "label": "Dynamik KMU / Gründungen",
+   "domain": "marktmacht",
+   "description": "Dynamik von KMU und Neugründungen."
+  },
+  {
+   "id": "PLAT",
+   "label": "Plattformmacht (Big Tech)",
+   "domain": "marktmacht",
+   "description": "Macht der Digitalplattformen (Cloud, App-Stores, Werbung, KI)."
+  },
+  {
+   "id": "STATE",
+   "label": "Staatliche Steuerungsfähigkeit",
+   "domain": "politik",
+   "description": "Fähigkeit des Staates, Märkte zu regulieren und Konzerne zu besteuern."
+  },
+  {
+   "id": "GROW",
+   "label": "Wachstumsdruck",
+   "domain": "oekologie",
+   "description": "Wachstumsdruck des Wirtschaftssystems (Kredit, Investition, Gewinn)."
+  },
+  {
+   "id": "LAND",
+   "label": "Intensive Landnutzung / Monokultur",
+   "domain": "oekologie",
+   "description": "Intensive Landnutzung und Monokulturen."
+  },
+  {
+   "id": "BIO",
+   "label": "Biodiversität",
+   "domain": "oekologie",
+   "description": "Biologische Vielfalt (Arten, Bestände, Ökosysteme)."
+  },
+  {
+   "id": "RES",
+   "label": "Resilienz / Ernährungssicherheit",
+   "domain": "oekologie",
+   "description": "Widerstandsfähigkeit von Ökosystemen und Ernährungssicherheit."
+  },
+  {
+   "id": "CLIM",
+   "label": "Klimaschutz (z. B. Kohleausstieg)",
+   "domain": "oekologie",
+   "description": "Klimaschutzmaßnahmen, z. B. Kohleausstieg."
+  },
+  {
+   "id": "WAT",
+   "label": "Wasserhaushalt Spree/Lausitz",
+   "domain": "oekologie",
+   "description": "Wasserhaushalt von Spree und Lausitz (heute teils künstlich durch Tagebau-Pumpen)."
+  },
+  {
+   "id": "INTER",
+   "label": "Einseitige Abhängigkeiten (weaponizable)",
+   "domain": "querschnitt",
+   "description": "Einseitige Abhängigkeiten, die als Druckmittel eingesetzt werden können."
+  },
+  {
+   "id": "RU_SILO",
+   "label": "Silowiki / Sicherheitsapparat",
+   "domain": "russland",
+   "description": "Sicherheitsapparat (FSB, Armee, Nationalgarde) – der tatsächliche Machtfaktor neben Putin."
+  },
+  {
+   "id": "RU_OLIG",
+   "label": "Einfluss der Oligarchen",
+   "domain": "russland",
+   "description": "Politischer Einfluss der Superreichen: in den 1990ern hoch, seit 2003 abhängig vom Kreml."
+  },
+  {
+   "id": "CN_LEGIT",
+   "label": "Leistungslegitimität der KP / Stimmung",
+   "domain": "china",
+   "description": "Gesellschaftsvertrag der KP: Wohlstand gegen politische Freiheit (Leistungslegitimität)."
+  },
+  {
+   "id": "CN_NATL",
+   "label": "Staatlicher Nationalismus China",
+   "domain": "china",
+   "description": "Staatlich geförderter Nationalismus als Ersatz-Legitimation."
+  },
+  {
+   "id": "DE_AUTO",
+   "label": "Deutsche Autoindustrie",
+   "domain": "europa",
+   "description": "Deutsche Autoindustrie (ca. 750.000 direkte Jobs, rund ein Drittel der Forschung der Wirtschaft)."
+  },
+  {
+   "id": "DE_REG",
+   "label": "Wohlstand der Industrieregionen DE",
+   "domain": "europa",
+   "description": "Wohlstand der Industrieregionen (Wolfsburg, Stuttgart, Zwickau, Saarland …)."
+  },
+  {
+   "id": "AI_INV",
+   "label": "KI-Investitionen (Rechenzentren, Chips)",
+   "domain": "technologie",
+   "description": "Investitionen in KI: Rechenzentren, Chips, Kraftwerke (2025 ca. 350–400 Mrd. USD)."
+  },
+  {
+   "id": "AI_ENERGY",
+   "label": "Strom-/Wasserbedarf KI",
+   "domain": "technologie",
+   "description": "Strom- und Wasserbedarf von KI-Rechenzentren."
+  },
+  {
+   "id": "AI_CONC",
+   "label": "Konzentration Rechenleistung / KI",
+   "domain": "technologie",
+   "description": "Konzentration von Rechenleistung und Spitzenmodellen bei wenigen Firmen."
+  },
+  {
+   "id": "AI_BUBBLE",
+   "label": "Finanzielle Fragilität (KI-Blase)",
+   "domain": "technologie",
+   "description": "Finanzielle Fragilität: zirkuläre Finanzierung, Kredite, hohe Bewertungen."
+  },
+  {
+   "id": "CHIP_DEP",
+   "label": "Abhängigkeit von TSMC/Taiwan",
+   "domain": "technologie",
+   "description": "Abhängigkeit von TSMC/Taiwan bei modernsten Chips (ca. 90 %)."
+  },
+  {
+   "id": "EMIS",
+   "label": "Treibhausgasemissionen",
+   "domain": "oekologie",
+   "description": "Treibhausgasemissionen."
+  },
+  {
+   "id": "LABOR",
+   "label": "Lohnquote / Massenkaufkraft",
+   "domain": "querschnitt",
+   "description": "Lohnquote und Massenkaufkraft."
+  },
+  {
+   "id": "DE_DEMAND",
+   "label": "Binnennachfrage DE (Löhne, öff. Investitionen)",
+   "domain": "europa",
+   "description": "Eigene Nachfrage in Deutschland: Löhne, Konsum, öffentliche Investitionen."
+  },
+  {
+   "id": "DEFC",
+   "label": "Defizitländer: Verschuldung / Deindustrialisierung",
+   "domain": "querschnitt",
+   "description": "Defizitländer (v. a. USA): Verschuldung und Verlust von Industrie."
+  },
+  {
+   "id": "PROT",
+   "label": "Protektionismus weltweit (z. B. US-Zölle)",
+   "domain": "querschnitt",
+   "description": "Protektionismus weltweit: Zölle, Exportkontrollen, Handelsbarrieren."
+  },
+  {
+   "id": "DIVERT",
+   "label": "Handelsumlenkung auf Drittmärkte",
+   "domain": "querschnitt",
+   "description": "Umlenkung blockierter Waren auf Drittmärkte – Treiber neuer Zölle."
+  }
+ ],
+ "edges": [
+  {
+   "from": "RU_IDEO",
+   "to": "RU_AGG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.7,
+   "claims": [
+    "RU-03"
+   ]
+  },
+  {
+   "from": "RU_AGG",
+   "to": "RU_MIL",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.8,
+   "claims": [
+    "RU-04"
+   ]
+  },
+  {
+   "from": "RU_MIL",
+   "to": "RU_DEP",
+   "polarity": "+",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": 0.7,
+   "claims": [
+    "RU-06"
+   ]
+  },
+  {
+   "from": "RU_DEP",
+   "to": "RU_MIL",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.6,
+   "claims": [
+    "RU-06"
+   ]
+  },
+  {
+   "from": "RU_MIL",
+   "to": "RU_CIV",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "RU-04"
+   ]
+  },
+  {
+   "from": "RU_MIL",
+   "to": "RU_INF",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.5,
+   "claims": [
+    "RU-05"
+   ]
+  },
+  {
+   "from": "RU_DEP",
+   "to": "RU_AGG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.3,
+   "claims": [
+    "RU-07"
+   ]
+  },
+  {
+   "from": "RU_AGG",
+   "to": "EU_DEF",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.7,
+   "claims": [
+    "RU-09"
+   ]
+  },
+  {
+   "from": "EU_DEF",
+   "to": "EU_DET",
+   "polarity": "+",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": 0.7,
+   "claims": [
+    "RU-09"
+   ]
+  },
+  {
+   "from": "EU_DET",
+   "to": "RU_AGG",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.5,
+   "claims": [
+    "RU-09"
+   ]
+  },
+  {
+   "from": "EU_DEF",
+   "to": "RU_MIL",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.3,
+   "claims": [
+    "RU-09"
+   ]
+  },
+  {
+   "from": "INTER",
+   "to": "RU_AGG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.2,
+   "claims": [
+    "RU-02",
+    "PO-03"
+   ]
+  },
+  {
+   "from": "CN_SOC",
+   "to": "CN_CON",
+   "polarity": "+",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "CN-04"
+   ]
+  },
+  {
+   "from": "CN_CON",
+   "to": "CN_OVR",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "CN-01"
+   ]
+  },
+  {
+   "from": "CN_SUB",
+   "to": "CN_OVR",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.7,
+   "claims": [
+    "CN-01",
+    "CN-02"
+   ]
+  },
+  {
+   "from": "CN_OVR",
+   "to": "CN_EXP",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.8,
+   "claims": [
+    "CN-05"
+   ]
+  },
+  {
+   "from": "CN_OVR",
+   "to": "CN_DEF",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "CN-10"
+   ]
+  },
+  {
+   "from": "CN_DEF",
+   "to": "CN_SUB",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.5,
+   "claims": [
+    "CN-03"
+   ]
+  },
+  {
+   "from": "CN_DEF",
+   "to": "CN_TWN",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.2,
+   "weight": 0.1,
+   "claims": [
+    "CN-11"
+   ]
+  },
+  {
+   "from": "CN_EXP",
+   "to": "EU_IND",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "CN-06",
+    "CN-09"
+   ]
+  },
+  {
+   "from": "EU_IND",
+   "to": "EU_TD",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "CN-07"
+   ]
+  },
+  {
+   "from": "EU_TD",
+   "to": "CN_EXP",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.4,
+   "claims": [
+    "CN-07"
+   ]
+  },
+  {
+   "from": "EU_TD",
+   "to": "CN_RAW",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.5,
+   "claims": [
+    "CN-08"
+   ]
+  },
+  {
+   "from": "CN_RAW",
+   "to": "EU_IND",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "CN-08",
+    "CN-09"
+   ]
+  },
+  {
+   "from": "CN_RAW",
+   "to": "INTER",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.7,
+   "claims": [
+    "CN-08"
+   ]
+  },
+  {
+   "from": "EU_DR",
+   "to": "INTER",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "CN-07"
+   ]
+  },
+  {
+   "from": "DE_SUR",
+   "to": "INTER",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.5,
+   "weight": 0.3,
+   "claims": [
+    "HA-01"
+   ]
+  },
+  {
+   "from": "CONC",
+   "to": "CONC",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.4,
+   "claims": [
+    "KO-03"
+   ]
+  },
+  {
+   "from": "CONC",
+   "to": "SME",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.4,
+   "claims": [
+    "KO-03",
+    "KO-04"
+   ]
+  },
+  {
+   "from": "CONC",
+   "to": "PLAT",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "KO-05"
+   ]
+  },
+  {
+   "from": "PLAT",
+   "to": "STATE",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.4,
+   "claims": [
+    "KO-05"
+   ]
+  },
+  {
+   "from": "STATE",
+   "to": "PLAT",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.5,
+   "claims": [
+    "KO-05"
+   ]
+  },
+  {
+   "from": "STATE",
+   "to": "CONC",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "KO-04",
+    "PO-02"
+   ]
+  },
+  {
+   "from": "EU_IND",
+   "to": "NAT",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.6,
+   "weight": -0.4,
+   "claims": [
+    "PO-01"
+   ]
+  },
+  {
+   "from": "NAT",
+   "to": "EU_INT",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.6,
+   "claims": [
+    "PO-01"
+   ]
+  },
+  {
+   "from": "EU_INT",
+   "to": "EU_TD",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "PO-01"
+   ]
+  },
+  {
+   "from": "EU_INT",
+   "to": "EU_DR",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "PO-01"
+   ]
+  },
+  {
+   "from": "EU_INT",
+   "to": "STATE",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "KO-05"
+   ]
+  },
+  {
+   "from": "GROW",
+   "to": "LAND",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "BI-01"
+   ]
+  },
+  {
+   "from": "GROW",
+   "to": "CONC",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.3,
+   "claims": [
+    "KO-02"
+   ]
+  },
+  {
+   "from": "LAND",
+   "to": "BIO",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": -0.8,
+   "claims": [
+    "BI-01",
+    "BI-02"
+   ]
+  },
+  {
+   "from": "BIO",
+   "to": "RES",
+   "polarity": "+",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "BI-02"
+   ]
+  },
+  {
+   "from": "RES",
+   "to": "LAND",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.4,
+   "weight": -0.3,
+   "claims": [
+    "BI-02"
+   ]
+  },
+  {
+   "from": "CLIM",
+   "to": "WAT",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": -0.5,
+   "claims": [
+    "BI-04"
+   ]
+  },
+  {
+   "from": "WAT",
+   "to": "BIO",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.4,
+   "claims": [
+    "BI-04"
+   ]
+  },
+  {
+   "from": "INTER",
+   "to": "RES",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "BI-05"
+   ]
+  },
+  {
+   "from": "RU_SILO",
+   "to": "RU_AGG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "RU-08"
+   ]
+  },
+  {
+   "from": "RU_OLIG",
+   "to": "RU_AGG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.2,
+   "weight": 0.1,
+   "claims": [
+    "RU-08"
+   ]
+  },
+  {
+   "from": "RU_CIV",
+   "to": "RU_OLIG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.2,
+   "claims": [
+    "RU-08"
+   ]
+  },
+  {
+   "from": "RU_MIL",
+   "to": "RU_SILO",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "RU-08"
+   ]
+  },
+  {
+   "from": "CN_DEF",
+   "to": "CN_LEGIT",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.7,
+   "weight": -0.6,
+   "claims": [
+    "CN-10",
+    "CN-11"
+   ]
+  },
+  {
+   "from": "CN_LEGIT",
+   "to": "CN_NATL",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.5,
+   "weight": -0.4,
+   "claims": [
+    "CN-11"
+   ]
+  },
+  {
+   "from": "CN_NATL",
+   "to": "CN_TWN",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.5,
+   "weight": 0.4,
+   "claims": [
+    "CN-11"
+   ]
+  },
+  {
+   "from": "EU_TD",
+   "to": "CN_DEF",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.3,
+   "claims": [
+    "CN-07",
+    "CN-10"
+   ]
+  },
+  {
+   "from": "CN_EXP",
+   "to": "DE_AUTO",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "CN-06",
+    "CN-09"
+   ]
+  },
+  {
+   "from": "DE_AUTO",
+   "to": "EU_IND",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.5,
+   "claims": [
+    "CN-09"
+   ]
+  },
+  {
+   "from": "DE_AUTO",
+   "to": "DE_REG",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.7,
+   "claims": [
+    "CN-09"
+   ]
+  },
+  {
+   "from": "DE_REG",
+   "to": "NAT",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "PO-01"
+   ]
+  },
+  {
+   "from": "AI_INV",
+   "to": "AI_ENERGY",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.9,
+   "weight": 0.8,
+   "claims": [
+    "TE-01"
+   ]
+  },
+  {
+   "from": "AI_ENERGY",
+   "to": "EMIS",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "TE-03"
+   ]
+  },
+  {
+   "from": "AI_ENERGY",
+   "to": "LAND",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.4,
+   "weight": 0.1,
+   "claims": [
+    "TE-02"
+   ]
+  },
+  {
+   "from": "CLIM",
+   "to": "EMIS",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "BI-03"
+   ]
+  },
+  {
+   "from": "AI_INV",
+   "to": "AI_CONC",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "TE-05"
+   ]
+  },
+  {
+   "from": "AI_CONC",
+   "to": "AI_INV",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "TE-05"
+   ]
+  },
+  {
+   "from": "AI_CONC",
+   "to": "PLAT",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "TE-05",
+    "KO-05"
+   ]
+  },
+  {
+   "from": "AI_INV",
+   "to": "AI_BUBBLE",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.5,
+   "claims": [
+    "TE-04"
+   ]
+  },
+  {
+   "from": "AI_INV",
+   "to": "CHIP_DEP",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.5,
+   "claims": [
+    "TE-05"
+   ]
+  },
+  {
+   "from": "CHIP_DEP",
+   "to": "INTER",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.5,
+   "claims": [
+    "TE-05"
+   ]
+  },
+  {
+   "from": "CN_RAW",
+   "to": "AI_INV",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.5,
+   "weight": -0.3,
+   "claims": [
+    "CN-08"
+   ]
+  },
+  {
+   "from": "AI_CONC",
+   "to": "LABOR",
+   "polarity": "-",
+   "delay": true,
+   "confidence": 0.4,
+   "weight": -0.3,
+   "claims": [
+    "TE-05"
+   ]
+  },
+  {
+   "from": "STATE",
+   "to": "AI_ENERGY",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.3,
+   "claims": [
+    "TE-03"
+   ]
+  },
+  {
+   "from": "DE_DEMAND",
+   "to": "DE_SUR",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": -0.6,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "CN_CON",
+   "to": "CN_EXP",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": -0.5,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "CN_EXP",
+   "to": "DEFC",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "DE_SUR",
+   "to": "DEFC",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.4,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "DEFC",
+   "to": "PROT",
+   "polarity": "+",
+   "delay": true,
+   "confidence": 0.7,
+   "weight": 0.6,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "PROT",
+   "to": "CN_DEF",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.4,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "PROT",
+   "to": "DE_AUTO",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.5,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "PROT",
+   "to": "DE_SUR",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": -0.3,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "PROT",
+   "to": "DIVERT",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.8,
+   "weight": 0.6,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "DIVERT",
+   "to": "EU_IND",
+   "polarity": "-",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": -0.4,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "DIVERT",
+   "to": "PROT",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.7,
+   "weight": 0.5,
+   "claims": [
+    "M1-01"
+   ]
+  },
+  {
+   "from": "CN_DEF",
+   "to": "CN_EXP",
+   "polarity": "+",
+   "delay": false,
+   "confidence": 0.6,
+   "weight": 0.4,
+   "claims": [
+    "CN-10"
+   ]
+  }
+ ],
+ "claims": [
+  {
+   "id": "RU-01",
+   "text": "Angriff war nicht absehbar",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-02",
+   "text": "Gas als Friedensbeweis",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-03",
+   "text": "Wirtschaftsnot verursachte Angriff",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-04",
+   "text": "Alles wird für den Krieg produziert",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-05",
+   "text": "Armut und Inflation steigen",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-06",
+   "text": "Kein einfacher Weg zurück zur Zivilwirtschaft",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-07",
+   "text": "Nächster Angriff zur Konjunkturbelebung",
+   "rating": "contested",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "RU-08",
+   "text": "Druck der Oligarchen auf Putin",
+   "rating": "partial",
+   "doc": "02_faktencheck.md",
+   "note": "1990er richtig, heute umgekehrt"
+  },
+  {
+   "id": "RU-09",
+   "text": "Aufrüsten als Verhandlungsmasse",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-01",
+   "text": "Subventionierte Überproduktion",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-02",
+   "text": "Firmen existieren nur durch Subventionen",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-03",
+   "text": "Ohne Subvention extreme Preissteigerung",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-04",
+   "text": "Mehr soziale Sicherung statt Subvention",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-05",
+   "text": "Weltmarkt wird überschwemmt",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-06",
+   "text": "Weltwirtschaft künstlich in die Knie gezwungen",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-07",
+   "text": "Einziger Schutz sind Zölle",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-08",
+   "text": "China hat alle relevanten Rohstoffe",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-09",
+   "text": "Zölle nicht möglich, Industrie geht kaputt",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-10",
+   "text": "Absatzkrise führt zu Inflation",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "CN-11",
+   "text": "Krieg als Konjunkturprogramm",
+   "rating": "contested",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "KO-01",
+   "text": "Kaum noch KMU",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "KO-02",
+   "text": "Wirtschaft muss wachsen",
+   "rating": "contested",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "KO-03",
+   "text": "Wachstum durch Zukäufe / Killer Acquisitions",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "KO-04",
+   "text": "Monopolisierung schadet",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "KO-05",
+   "text": "Technofeudalismus: Konzerne mächtiger als Politik",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "BI-01",
+   "text": "Wachstumsdenken führte zu Monokulturen",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "BI-02",
+   "text": "Monokulturen sind anfälliger",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "BI-03",
+   "text": "Klimaschutz kann Biodiversität schaden",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "BI-04",
+   "text": "Tagebau-Ende: Wassermangel Spree",
+   "rating": "supported",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "BI-05",
+   "text": "GB vollständig importabhängig",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "HA-01",
+   "text": "Weltmarkt übersättigt, Waren verschenkt",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "HA-02",
+   "text": "Nur produzieren, was man konsumiert",
+   "rating": "partial",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "PO-01",
+   "text": "Nationalparteien liegen richtig",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "PO-02",
+   "text": "EU begünstigt Monopolisierung",
+   "rating": "contested",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "PO-03",
+   "text": "Paradox Verflechtung vs. Krieg",
+   "rating": "false",
+   "doc": "02_faktencheck.md"
+  },
+  {
+   "id": "TE-01",
+   "text": "KI erhöht Energiebedarf",
+   "rating": "supported",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "TE-02",
+   "text": "Für KI wird Wald gerodet",
+   "rating": "partial",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "TE-03",
+   "text": "KI verschärft Klimakrise",
+   "rating": "partial",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "TE-04",
+   "text": "KI-Geld wird nur im Kreis geschoben, kein echtes Wachstum",
+   "rating": "partial",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "TE-05",
+   "text": "KI ist monopolistisch strukturiert",
+   "rating": "supported",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "M1-01",
+   "text": "China und DE verschieben Nachfrageschwäche via Überschüsse; RU ersetzt sie durch Kriegsnachfrage",
+   "rating": "partial",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "HA-03",
+   "text": "China verschenkt Ware = Defizitländer zahlen mit Schulden",
+   "rating": "supported",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "DE-01",
+   "text": "DE-Überschuss kam einfach von konkurrenzlosen Produkten",
+   "rating": "partial",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "CN-12",
+   "text": "Realer Wert chin. E-Autos entspricht deutschem Preisniveau",
+   "rating": "false",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "CN-13",
+   "text": "EU-Ausgleichszölle gelten nur für Plug-in-Hybride",
+   "rating": "false",
+   "doc": "04_vertiefung.md"
+  },
+  {
+   "id": "US-01",
+   "text": "USA als Industrieland kann kein Defizitland sein",
+   "rating": "false",
+   "doc": "04_vertiefung.md"
+  }
+ ],
+ "loops": [
+  {
+   "id": "R1",
+   "type": "R",
+   "name": "Kriegswirtschafts-Falle",
+   "nodes": [
+    "RU_MIL",
+    "RU_DEP"
+   ],
+   "text": "Mehr Rüstung macht die Wirtschaft abhängiger vom Krieg, das erhöht die Kosten eines Friedens."
+  },
+  {
+   "id": "B1",
+   "type": "B",
+   "name": "Abschreckung",
+   "nodes": [
+    "RU_AGG",
+    "EU_DEF",
+    "EU_DET"
+   ],
+   "text": "Aggression führt zu Verteidigung, Abschreckung senkt die Aggression."
+  },
+  {
+   "id": "R2",
+   "type": "R",
+   "name": "Sicherheitsdilemma",
+   "nodes": [
+    "EU_DEF",
+    "RU_MIL",
+    "RU_DEP",
+    "RU_AGG"
+   ],
+   "text": "Aufrüstung wird als Bedrohung gelesen und treibt die Gegenseite an."
+  },
+  {
+   "id": "R3",
+   "type": "R",
+   "name": "Überkapazitäts-Spirale China",
+   "nodes": [
+    "CN_OVR",
+    "CN_DEF",
+    "CN_SUB"
+   ],
+   "text": "Überangebot führt zu Deflation, der Staat stützt mit mehr Investitionen – mehr Überangebot."
+  },
+  {
+   "id": "R4",
+   "type": "R",
+   "name": "Handelskonflikt EU–China",
+   "nodes": [
+    "CN_EXP",
+    "EU_IND",
+    "EU_TD",
+    "CN_RAW"
+   ],
+   "text": "Exportdruck führt zu Handelsschutz, darauf folgt Rohstoff-Vergeltung."
+  },
+  {
+   "id": "R5",
+   "type": "R",
+   "name": "Konzentration",
+   "nodes": [
+    "CONC"
+   ],
+   "text": "Marktmacht bringt Gewinne, Gewinne finanzieren Übernahmen."
+  },
+  {
+   "id": "R6",
+   "type": "R",
+   "name": "Regulierungserosion",
+   "nodes": [
+    "PLAT",
+    "STATE"
+   ],
+   "text": "Plattformmacht schwächt den Staat, ein schwacher Staat reguliert weniger."
+  },
+  {
+   "id": "R7",
+   "type": "R",
+   "name": "Deindustrialisierung und Populismus",
+   "nodes": [
+    "EU_IND",
+    "NAT",
+    "EU_INT",
+    "EU_TD",
+    "CN_EXP",
+    "DE_AUTO",
+    "DE_REG"
+   ],
+   "text": "Abstieg führt zu Populismus, Renationalisierung schwächt die EU und beschleunigt den Abstieg."
+  },
+  {
+   "id": "R8",
+   "type": "R",
+   "name": "Ökologische Verwundbarkeit",
+   "nodes": [
+    "LAND",
+    "BIO",
+    "RES"
+   ],
+   "text": "Intensive Landnutzung senkt Biodiversität und Resilienz, Ernteausfälle erhöhen den Ertragsdruck."
+  },
+  {
+   "id": "R9",
+   "type": "R",
+   "name": "KI-Konzentration",
+   "nodes": [
+    "AI_INV",
+    "AI_CONC"
+   ],
+   "text": "Rechenleistung bringt bessere Modelle, Nutzer und Kapital – und mehr Rechenleistung."
+  },
+  {
+   "id": "R12",
+   "type": "R",
+   "name": "Protektionismus-Spirale",
+   "nodes": [
+    "DEFC",
+    "PROT",
+    "DIVERT"
+   ],
+   "text": "Zölle lenken Waren auf Drittmärkte um, dort entstehen neue Zölle."
+  }
+ ]
+}

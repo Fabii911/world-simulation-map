@@ -1,0 +1,23 @@
+# Abhängigkeiten und Build
+node_modules/
+dist/
+.cache/
+
+# Geheimnisse – niemals committen
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials.json
+.claude/settings.local.json
+
+# Testartefakte
+test-results/
+screenshots/
+playwright-report/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
