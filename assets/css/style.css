@@ -353,3 +353,24 @@ svg.pr-share { width: 100%; height: auto; display: block; overflow: visible; }
 .pv-val { font-size: 12px; fill: var(--ink-2); font-variant-numeric: tabular-nums; }
 .pv-graph { height: 520px; border: 1px solid var(--border); border-radius: 8px; background: var(--page); }
 .pr-link { font-size: 13px; font-weight: 400; margin-left: 10px; }
+
+/* Lieferketten */
+.sc-h { font-size: 16px; margin: 10px 0 0; }
+.sc-critical { fill: var(--critical); opacity: 0.07; }
+.sc-zone { font-size: 11px; fill: var(--critical); }
+.sc-thresh { stroke: var(--muted); stroke-dasharray: 4 4; }
+.sc-pt { cursor: pointer; }
+.sc-pt circle { stroke: var(--surface); stroke-width: 1.5px; fill-opacity: 0.9; }
+.sc-pt:hover circle, .sc-pt:focus circle { stroke: var(--ink); }
+.sc-pt.sel circle { stroke: var(--ink); stroke-width: 2.5px; }
+.sc-label { font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; pointer-events: none; }
+svg.sc-bars, svg.sc-line { width: 100%; height: auto; display: block; overflow: visible; margin-bottom: 6px; }
+.sc-bar { fill: var(--s1); }
+.sc-bar.hi { fill: var(--s2); }
+.sc-bar-label, .sc-bar-val { font-size: 11px; fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+.va-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .va-grid { grid-template-columns: 1fr; } }
+#va-main h3 { font-size: 13px; margin: 10px 0 6px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; }
+#view-lieferketten { overflow: auto; }
+#view-lieferketten .split { flex: none; height: 480px; min-height: 0; }
+#view-lieferketten .mapbox { min-height: 0; }

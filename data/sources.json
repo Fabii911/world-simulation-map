@@ -34,10 +34,22 @@
    "url": "https://atlas.hks.harvard.edu",
    "api": "https://atlas.hks.harvard.edu/api/graphql",
    "license": "CC0 1.0",
-   "used_for": "Warenexporte nach Land × HS-Kapitel × Jahr (2000 bis letztes verfügbares Jahr): Druckmatrix, Exportkorb, Weltmarktanteile",
-   "file": "data/series/trade.json",
-   "script": "scripts/fetch-atlas.mjs",
+   "used_for": "Warenexporte nach Land × HS-Kapitel × Jahr (2000 bis letztes verfügbares Jahr): Druckmatrix, Exportkorb, Weltmarktanteile; Importe kritischer Güter nach Lieferland (Abhängigkeits-Quadrant)",
+   "file": "data/series/trade.json, data/series/dependencies.json",
+   "script": "scripts/fetch-atlas.mjs, scripts/fetch-dependencies.mjs",
    "update": "automatisch, monatlich (GitHub Actions); der Atlas aktualisiert jährlich"
+  },
+  {
+   "id": "tiva",
+   "name": "Trade in Value Added (TiVA): Origin of value added in gross exports",
+   "publisher": "OECD",
+   "url": "https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html",
+   "api": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_EXGRVA@DF_EXGRVA,1.2",
+   "license": "OECD Terms and Conditions (Weiterverwendung mit Quellenangabe)",
+   "used_for": "Herkunft der Wertschöpfung in Exporten nach Land und Branche (Lieferketten)",
+   "file": "data/series/tiva.json",
+   "script": "scripts/fetch-tiva.mjs",
+   "update": "automatisch, monatlich (GitHub Actions); die OECD aktualisiert etwa alle zwei Jahre"
   },
   {
    "id": "doughnut",

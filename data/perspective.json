@@ -48,6 +48,26 @@
    ]
   },
   {
+   "id": "critical_cn",
+   "name": "Kritische Importe aus China",
+   "mechanism": "M2",
+   "source": {
+    "type": "dependency_china"
+   },
+   "direction": "high",
+   "unit": "% Importe",
+   "text": "Anteil Chinas an den Importen kritischer Güter (Energiewende, Rohstoffe, Elektronik, Gesundheit), gewichtet mit dem Importwert. Nur für 27 große Volkswirtschaften.",
+   "nodes": [
+    "CN_RAW",
+    "INTER",
+    "CHIP_DEP"
+   ],
+   "chains": [
+    "rohstoffe",
+    "ki"
+   ]
+  },
+  {
    "id": "export_dep",
    "name": "Exportabhängigkeit",
    "mechanism": "M2",

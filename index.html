@@ -14,6 +14,7 @@
       <a href="#diagnose" role="tab" data-view="diagnose">Diagnose</a>
       <a href="#druck" role="tab" data-view="druck">Handelsdruck</a>
       <a href="#sicht" role="tab" data-view="sicht">Aus Sicht von</a>
+      <a href="#lieferketten" role="tab" data-view="lieferketten">Lieferketten</a>
       <a href="#netz" role="tab" data-view="netz">Wirkungsnetz</a>
       <a href="#ketten" role="tab" data-view="ketten">Ketten</a>
       <a href="#sim" role="tab" data-view="sim">Simulation</a>
@@ -125,6 +126,30 @@
       </details>
     </section>
 
+    <!-- Lieferketten -->
+    <section id="view-lieferketten" class="view" hidden>
+      <div class="notice"><b>Zwei Blickwinkel auf Abhängigkeit:</b> Oben die Importe kritischer Güter (wie konzentriert, wie ersetzbar),
+        unten die Wertschöpfung in Exporten (wie viel ausländische Arbeit steckt darin). Ein kleiner Wertschöpfungsanteil kann trotzdem kritisch sein, wenn er ein Engpass ist, etwa Batterien oder seltene Erden.</div>
+      <h2 class="sc-h">Kritische Importgüter: Abhängigkeits-Quadrant</h2>
+      <div class="toolbar">
+        <label class="year-ctl">Importland <select id="sc-imp" aria-label="Importland"></select></label>
+        <label class="year-ctl">Jahr <select id="sc-year" aria-label="Jahr"></select></label>
+      </div>
+      <div id="sc-groups" class="chips" aria-label="Gütergruppen"></div>
+      <p id="sc-summary" class="reading"></p>
+      <div class="split">
+        <div id="sc-quadrant" class="mapbox" aria-label="Abhängigkeits-Quadrant"></div>
+        <aside id="sc-panel" class="panel" aria-live="polite"></aside>
+      </div>
+      <div id="sc-legend" class="legend"></div>
+      <h2 class="sc-h">Herkunft der Wertschöpfung in Exporten (OECD TiVA)</h2>
+      <div class="toolbar">
+        <label class="year-ctl">Exportland <select id="va-ex" aria-label="Exportland"></select></label>
+        <label class="year-ctl">Branche <select id="va-act" aria-label="Branche"></select></label>
+      </div>
+      <div id="va-main" class="pr-profile" aria-live="polite"></div>
+    </section>
+
     <!-- Wirkungsnetz -->
     <section id="view-netz" class="view" hidden>
       <div class="toolbar">
@@ -228,6 +253,13 @@
       <p>Für jedes Land und jede Gütergruppe: Anteil der Gütergruppe an den Warenexporten des Landes im Basisjahr × Veränderung von Chinas Weltmarktanteil in dieser Gütergruppe bis zum Endjahr.
         Die Summe über alle Gütergruppen ist der Druck auf das Land, in Prozentpunkten. Das Maß ist an die Importwettbewerbs-Exposition nach Autor, Dorn und Hanson (2013) angelehnt.
         Es zeigt, wo Konkurrenzdruck ankommt, nicht ob daraus Verluste entstehen. Werte in laufenden US-Dollar; Kapitel 99 („nicht zugeordnet“) bleibt außen vor.</p>
+      <h2>Wie Lieferketten-Abhängigkeit gemessen wird</h2>
+      <p><b>Kritische Importgüter:</b> Für rund 30 Güter (Batterien, Chips, seltene Erden, Arzneimittel, Energie, Dünger u. a.) wird je Importland berechnet,
+        wie konzentriert die Lieferländer sind (Herfindahl-Index, HHI) und wie stark das Land auf Importe angewiesen ist (Importe ÷ (Importe + eigene Exporte)).
+        Die Schwellen 0,4 und 50 % folgen der Methode der EU-Kommission zu strategischen Abhängigkeiten (SWD(2021) 352), die für die EU Importe von außerhalb der EU betrachtet;
+        hier zählen bei EU-Ländern auch Importe aus anderen EU-Staaten.</p>
+      <p><b>Wertschöpfung in Exporten:</b> Die OECD-Datenbank Trade in Value Added (TiVA) zeigt, aus welchen Ländern die Wertschöpfung stammt, die in den Exporten einer Branche steckt,
+        einschließlich Vorprodukten über mehrere Stufen. So werden indirekte Abhängigkeiten sichtbar, die in Handelsdaten fehlen.</p>
       <h2>Wie „Aus Sicht von“ gewichtet</h2>
       <p>Die Wirkungslogik ist für alle Länder dieselbe. Die Perspektive zeigt, über welche Kanäle sie ein Land trifft:
         Für jeden Kanal (z. B. Konkurrenzdruck durch China, Exportabhängigkeit, Energieimporte) gibt es eine Kennzahl.

@@ -10,6 +10,8 @@
     "fetch:worldbank": "node scripts/fetch-worldbank.mjs",
     "fetch:owid": "node scripts/fetch-owid.mjs",
     "fetch:atlas": "node scripts/fetch-atlas.mjs",
+    "fetch:dependencies": "node scripts/fetch-dependencies.mjs",
+    "fetch:tiva": "node scripts/fetch-tiva.mjs",
     "check-secrets": "node scripts/check-secrets.mjs",
     "test:ui": "node tests/smoke.cjs",
     "test": "npm run validate && npm run check-secrets && npm run test:ui"
