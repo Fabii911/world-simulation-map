@@ -1,0 +1,257 @@
+{
+ "chains": [
+  {
+   "id": "china-auto",
+   "title": "China: Vorsorgesparen bis zum Druck auf die deutsche Autoindustrie",
+   "question": "Warum landet Chinas schwache Binnennachfrage in deutschen Autoregionen?",
+   "steps": [
+    {
+     "from": "CN_SOC",
+     "to": "CN_CON",
+     "text": "Schwache soziale Sicherung zwingt Haushalte zum Vorsorgesparen; der Konsum bleibt niedrig (ca. 39 % des BIP)."
+    },
+    {
+     "from": "CN_CON",
+     "to": "CN_OVR",
+     "text": "Was im Inland nicht gekauft wird, wird zur Überkapazität."
+    },
+    {
+     "from": "CN_OVR",
+     "to": "CN_EXP",
+     "text": "Überkapazität drängt auf den Weltmarkt: Exportüberschuss."
+    },
+    {
+     "from": "CN_EXP",
+     "to": "DE_AUTO",
+     "text": "Der Exportzuwachs konzentriert sich seit 2019 auf Fahrzeuge: Chinas Weltmarktanteil steigt, der deutsche sinkt."
+    },
+    {
+     "from": "DE_AUTO",
+     "to": "DE_REG",
+     "text": "Werksschließungen und Zuliefererpleiten treffen Industrieregionen."
+    },
+    {
+     "from": "DE_REG",
+     "to": "NAT",
+     "text": "Regionaler Abstieg stärkt nationalistische Parteien (belegt für den US-China-Schock)."
+    }
+   ]
+  },
+  {
+   "id": "russland",
+   "title": "Russland: Kriegswirtschafts-Falle und Abschreckung",
+   "question": "Warum kommt Russland schwer aus dem Krieg heraus, und was bewirkt Europas Aufrüstung?",
+   "steps": [
+    {
+     "from": "RU_IDEO",
+     "to": "RU_AGG",
+     "text": "Imperiale Ideologie und Regimesicherung treiben die Aggression, nicht wirtschaftliche Not."
+    },
+    {
+     "from": "RU_AGG",
+     "to": "RU_MIL",
+     "text": "Krieg erzwingt hohe Militärausgaben."
+    },
+    {
+     "from": "RU_MIL",
+     "to": "RU_DEP",
+     "text": "Rüstung und Sold werden zur Einkommensquelle ganzer Regionen."
+    },
+    {
+     "from": "RU_DEP",
+     "to": "RU_AGG",
+     "text": "Ein Frieden würde eine Demobilisierungskrise auslösen: verstärkt das Aggressionsrisiko."
+    },
+    {
+     "from": "RU_AGG",
+     "to": "EU_DEF",
+     "text": "Europa reagiert mit höheren Verteidigungsausgaben."
+    },
+    {
+     "from": "EU_DEF",
+     "to": "EU_DET",
+     "text": "Mit Verzögerung entsteht Abschreckung."
+    }
+   ]
+  },
+  {
+   "id": "de-ueberschuss",
+   "title": "Deutschlands Überschuss und die Zollspirale",
+   "question": "Wie wird ein deutscher Exportüberschuss zum Risiko für die deutsche Autoindustrie?",
+   "steps": [
+    {
+     "from": "DE_DEMAND",
+     "to": "DE_SUR",
+     "text": "Schwache Binnennachfrage (Löhne, öffentliche Investitionen) bedeutet: Ersparnis fließt als Exportüberschuss ins Ausland."
+    },
+    {
+     "from": "DE_SUR",
+     "to": "DEFC",
+     "text": "Überschüsse eines Landes sind Defizite anderer, vor allem der USA."
+    },
+    {
+     "from": "DEFC",
+     "to": "PROT",
+     "text": "Defizitländer verlieren Industrie und reagieren mit Zöllen."
+    },
+    {
+     "from": "PROT",
+     "to": "DE_AUTO",
+     "text": "Zölle treffen die Exportbranche: 15 % US-Zoll auf EU-Autos seit 2025."
+    },
+    {
+     "from": "DE_AUTO",
+     "to": "DE_REG",
+     "text": "Die Folgen landen in den Industrieregionen."
+    }
+   ]
+  },
+  {
+   "id": "zollspirale",
+   "title": "Protektionismus-Spirale",
+   "question": "Warum schaukelt sich ein Handelsungleichgewicht zum Handelskonflikt auf?",
+   "steps": [
+    {
+     "from": "CN_EXP",
+     "to": "DEFC",
+     "text": "Chinas Überschuss erzeugt Defizite bei anderen."
+    },
+    {
+     "from": "DEFC",
+     "to": "PROT",
+     "text": "Defizitländer errichten Zölle."
+    },
+    {
+     "from": "PROT",
+     "to": "DIVERT",
+     "text": "Blockierte Waren werden auf Drittmärkte umgelenkt."
+    },
+    {
+     "from": "DIVERT",
+     "to": "EU_IND",
+     "text": "Die Umlenkung erhöht den Druck auf die europäische Industrie."
+    },
+    {
+     "from": "EU_IND",
+     "to": "NAT",
+     "text": "Industrieverlust stärkt Renationalisierung."
+    },
+    {
+     "from": "NAT",
+     "to": "EU_INT",
+     "text": "Renationalisierung schwächt die gemeinsame Verhandlungsmacht der EU."
+    },
+    {
+     "from": "EU_INT",
+     "to": "EU_TD",
+     "text": "Eine schwächere EU kann sich weniger wirksam schützen."
+    }
+   ]
+  },
+  {
+   "id": "rohstoffe",
+   "title": "Abhängigkeit als Waffe: Handelsschutz gegen Rohstoffhebel",
+   "question": "Warum ist Handelsschutz gegen China ein Zielkonflikt?",
+   "steps": [
+    {
+     "from": "EU_TD",
+     "to": "CN_RAW",
+     "text": "Ausgleichszölle provozieren Gegenmaßnahmen, etwa Exportkontrollen für seltene Erden."
+    },
+    {
+     "from": "CN_RAW",
+     "to": "EU_IND",
+     "text": "Fehlende Rohstoffe legen Bänder still (Zulieferer ab Juni 2025)."
+    },
+    {
+     "from": "EU_IND",
+     "to": "NAT",
+     "text": "Industrieverlust stärkt Renationalisierung."
+    }
+   ]
+  },
+  {
+   "id": "technofeudalismus",
+   "title": "Konzentration und Politik",
+   "question": "Wie wird wirtschaftliche Konzentration zu politischer Ohnmacht?",
+   "steps": [
+    {
+     "from": "GROW",
+     "to": "CONC",
+     "text": "Wachstumsdruck begünstigt Übernahmen und Größe."
+    },
+    {
+     "from": "CONC",
+     "to": "PLAT",
+     "text": "Konzentration schafft Plattformmacht."
+    },
+    {
+     "from": "PLAT",
+     "to": "STATE",
+     "text": "Plattformmacht schwächt die Steuerungsfähigkeit des Staates (Lobby, Standortdruck)."
+    }
+   ]
+  },
+  {
+   "id": "ki",
+   "title": "KI-Boom: Energie, Konzentration, Abhängigkeit",
+   "question": "Welche Folgen hat der KI-Investitionsboom jenseits der Technik?",
+   "steps": [
+    {
+     "from": "AI_INV",
+     "to": "AI_ENERGY",
+     "text": "Rechenzentren brauchen Strom und Wasser."
+    },
+    {
+     "from": "AI_ENERGY",
+     "to": "EMIS",
+     "text": "Kurzfristig kommt der Strom vielfach aus Gas: Emissionen steigen."
+    }
+   ]
+  },
+  {
+   "id": "biodiversitaet",
+   "title": "Wachstum gegen Biodiversität",
+   "question": "Wie hängen Wachstum, Monokultur und Ernährungssicherheit zusammen?",
+   "steps": [
+    {
+     "from": "GROW",
+     "to": "LAND",
+     "text": "Ertragsdruck führt zu intensiver Landnutzung und Monokulturen."
+    },
+    {
+     "from": "LAND",
+     "to": "BIO",
+     "text": "Landnutzungswandel ist der wichtigste Treiber des Artenverlusts (IPBES)."
+    },
+    {
+     "from": "BIO",
+     "to": "RES",
+     "text": "Weniger Vielfalt bedeutet weniger Widerstandsfähigkeit, auch für Ernten."
+    }
+   ]
+  },
+  {
+   "id": "lausitz",
+   "title": "Zielkonflikt Klimaschutz: Kohleausstieg und Wasser",
+   "question": "Wie kann Klimaschutz der Biodiversität schaden?",
+   "steps": [
+    {
+     "from": "CLIM",
+     "to": "EMIS",
+     "text": "Klimaschutz senkt Emissionen."
+    },
+    {
+     "from": "CLIM",
+     "to": "WAT",
+     "text": "Ohne Tagebau-Pumpen fehlt der Spree Wasser (bis zu 75 % in trockenen Sommern)."
+    },
+    {
+     "from": "WAT",
+     "to": "BIO",
+     "text": "Wassermangel gefährdet Spreewald und Feuchtgebiete."
+    }
+   ]
+  }
+ ]
+}

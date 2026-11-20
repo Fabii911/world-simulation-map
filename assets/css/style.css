@@ -300,3 +300,35 @@ svg.pr-share { width: 100%; height: auto; display: block; overflow: visible; }
 .pr-line.cn { stroke: var(--s2); }
 .pr-line-label { font-size: 10px; fill: var(--ink-2); }
 .pr-controls label { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); }
+
+/* Ketten und Evidenz */
+.ch-main { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; overflow: auto; }
+.ch-main h2 { font-size: 17px; margin: 0 0 4px; }
+.ch-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 10px 0 14px; font-size: 14px; }
+.ch-summary > div { background: var(--page); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; }
+.ch-steps { list-style: none; margin: 0; padding: 0; }
+.ch-node { display: flex; align-items: baseline; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--page); font-size: 14px; }
+.ch-node .muted { font-size: 13px; }
+.ch-link { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--axis); margin-left: 22px; padding: 10px 12px 10px 14px; cursor: pointer; border-radius: 0; }
+.ch-link:hover { background: var(--grid); }
+.ch-step.sel .ch-link { background: var(--grid); border-left-color: var(--accent); }
+.ch-arrow { flex: none; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #fff; }
+.ch-arrow.pos { background: var(--pos); }
+.ch-arrow.neg { background: var(--neg); }
+.ch-text { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.ch-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.ch-branch { font-size: 12px; color: var(--muted); margin: 10px 0 4px; text-transform: uppercase; letter-spacing: .04em; }
+.ch-alts { margin-bottom: 10px; }
+.ev-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-2); white-space: nowrap; }
+.ev-fits { border-color: var(--good); }
+.ev-contradicts { border-color: var(--critical); }
+.ev-unclear, .ev-few { border-color: var(--warning); }
+.ev-chart svg, .ev-scatter svg { width: 100%; height: auto; display: block; overflow: visible; margin-bottom: 6px; }
+.ev-title { font-size: 11px; font-weight: 600; fill: var(--ink); }
+.ev-empty { font-size: 10px; fill: var(--muted); }
+.ev-line { fill: none; stroke-width: 2px; }
+.ev-line.x { stroke: var(--s1); }
+.ev-line.y { stroke: var(--s2); }
+.ev-zero { stroke: var(--axis); }
+.ev-expect { stroke: var(--muted); stroke-dasharray: 4 4; }
+.ev-dot { fill: var(--accent); fill-opacity: 0.75; stroke: var(--surface); stroke-width: 1.5px; }

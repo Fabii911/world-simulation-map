@@ -1,5 +1,6 @@
 // Wirkungsnetz (Causal Loop Diagram) mit Cytoscape.
 import { DOMAINS, cssVar, domainColor, esc, ratingBadge, weightAt, periodNoteAt, eventYear } from './data.js';
+import { loadEvidence, renderEvidence, setValidity } from './evidence.js';
 
 let cy = null;
 let D = null;
@@ -260,7 +261,13 @@ export function selectEdge(key) {
     ${periods ? `<h3>Veränderung über die Zeit</h3><ul>${periods.map((p) => `<li>${p.from}–${p.to ?? 'heute'}: Gewicht ${p.weight} – ${esc(p.note)}</li>`).join('')}</ul>${note ? `<p class="muted">Aktuell gewählt: ${esc(note)}</p>` : ''}` : ''}
     <h3>Begründet durch</h3>
     <ul>${claims.map((c) => `<li><a href="#fakten/${c.id}">${c.id}</a> ${ratingBadge(c.rating)}<br>${esc(c.text)}</li>`).join('') || '<li class="muted">noch keine geprüfte Aussage</li>'}</ul>
+    <div id="net-evidence"><h3>Korrelation (Daten)</h3><p class="muted">lädt …</p></div>
     <p><button class="linklike" data-node="${a.id}">← ${esc(a.label)}</button> · <button class="linklike" data-node="${b.id}">${esc(b.label)} →</button></p>`);
+  loadEvidence().then(() => {
+    setValidity(D.validityByEdge);
+    const el = document.getElementById('net-evidence');
+    if (el) renderEvidence(el, e, D, { literature: false });
+  }).catch(() => { const el = document.getElementById('net-evidence'); if (el) el.innerHTML = ''; });
 }
 
 export function selectLoop(id) {

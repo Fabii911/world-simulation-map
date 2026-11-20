@@ -26,6 +26,7 @@ Das Projekt verbindet drei Dinge:
 | **Diagnose** | Privater Konsum gegen Leistungsbilanzsaldo, animiert über die Jahre. Ordnet Länder Typen zu, z. B. „Nachfrageschwäche wird exportiert“ oder „Defizit mit hohem Konsum“ |
 | **Handelsdruck** | Druckmatrix: Welches Land steht bei welchem Gut unter Konkurrenzdruck durch China, und wie verschiebt sich das über die Zeit (2000 bis heute)? Dazu Exportkorb je Land und Weltmarktanteile im Vergleich mit China |
 | **Wirkungsnetz** | 50 Größen, 83 Wirkungen, 11 Rückkopplungsschleifen. Jede Wirkung verweist auf die Aussagen, die sie begründen |
+| **Ketten** | Ursache-Wirkungs-Ketten Schritt für Schritt (9 vordefinierte, dazu freie Pfadsuche zwischen zwei Größen). Jeder Schritt zeigt getrennt den Literaturbeleg (Kausalität) und den Datenbeleg (Korrelation der Jahresveränderungen) |
 | **Simulation** | Hebel setzen (z. B. „China baut den Sozialstaat aus“, „Weltweiter Protektionismus“) und sehen, wie sich die Wirkung durch das Netz ausbreitet |
 | **Zeitleiste** | Ereignisse von 1906 bis heute, verknüpft mit dem Netz, inklusive historischer Vergleichspunkte (1914, 1930er) |
 | **Faktencheck** | Alle geprüften Aussagen mit Bewertung und Begründung |

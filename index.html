@@ -14,6 +14,7 @@
       <a href="#diagnose" role="tab" data-view="diagnose">Diagnose</a>
       <a href="#druck" role="tab" data-view="druck">Handelsdruck</a>
       <a href="#netz" role="tab" data-view="netz">Wirkungsnetz</a>
+      <a href="#ketten" role="tab" data-view="ketten">Ketten</a>
       <a href="#sim" role="tab" data-view="sim">Simulation</a>
       <a href="#zeit" role="tab" data-view="zeit">Zeitleiste</a>
       <a href="#fakten" role="tab" data-view="fakten">Faktencheck</a>
@@ -122,6 +123,22 @@
       <div class="legend" id="net-legend"></div>
     </section>
 
+    <!-- Ketten -->
+    <section id="view-ketten" class="view" hidden>
+      <div class="toolbar"><span class="muted">Ketten:</span></div>
+      <div id="ch-list" class="chips" aria-label="Vordefinierte Ketten"></div>
+      <div class="toolbar">
+        <span class="muted">Eigener Pfad:</span>
+        <label class="year-ctl">von <select id="ch-from" aria-label="Start"></select></label>
+        <label class="year-ctl">nach <select id="ch-to" aria-label="Ziel"></select></label>
+        <button type="button" id="ch-find">Pfad suchen</button>
+      </div>
+      <div class="split">
+        <div id="ch-main" class="ch-main" aria-live="polite"></div>
+        <aside id="ch-panel" class="panel" aria-live="polite"></aside>
+      </div>
+    </section>
+
     <!-- Simulation -->
     <section id="view-sim" class="view" hidden>
       <div class="notice">Die Simulation zeigt <b>Richtungen und Zielkonflikte</b>, keine Prognosen in Zahlen. Sie beruht auf den geschätzten Gewichten im Wirkungsnetz (Fuzzy Cognitive Map); Verzögerungen und Mengen sind nicht modelliert.</div>
@@ -188,6 +205,12 @@
       <p>Für jedes Land und jede Gütergruppe: Anteil der Gütergruppe an den Warenexporten des Landes im Basisjahr × Veränderung von Chinas Weltmarktanteil in dieser Gütergruppe bis zum Endjahr.
         Die Summe über alle Gütergruppen ist der Druck auf das Land, in Prozentpunkten. Das Maß ist an die Importwettbewerbs-Exposition nach Autor, Dorn und Hanson (2013) angelehnt.
         Es zeigt, wo Konkurrenzdruck ankommt, nicht ob daraus Verluste entstehen. Werte in laufenden US-Dollar; Kapitel 99 („nicht zugeordnet“) bleibt außen vor.</p>
+      <h2>Wie Kausalität und Korrelation getrennt werden</h2>
+      <p><b>Kausalität</b> heißt hier: Eine Wirkung ist durch geprüfte Aussagen aus der Literatur begründet (Faktencheck).
+        <b>Korrelation</b> heißt: Zwei Kennzahlen, die für Ursache und Wirkung stehen, verändern sich von Jahr zu Jahr gemeinsam.
+        Verglichen werden Jahresveränderungen statt Niveaus, damit gemeinsame Trends keinen Zusammenhang vortäuschen.
+        Ab |r| ≥ 0,2 und mindestens 10 Wertepaaren gilt ein Zusammenhang als erkennbar; passt sein Vorzeichen zur behaupteten Richtung, „passen die Daten“.
+        Viele Größen lassen sich nur über Ersatzgrößen messen; das ist bei jedem Beleg angegeben. Ein fehlender Zusammenhang in Jahresdaten widerlegt keine langfristige Wirkung.</p>
       <h2>Wie die Simulation rechnet</h2>
       <p>Jede Größe bekommt einen Wert zwischen −1 (stark gesunken) und +1 (stark gestiegen). Gesetzte Hebel bleiben fest.
         In jedem Schritt summiert jede andere Größe die Werte ihrer Ursachen, gewichtet mit Pfeilgewicht × Sicherheit (unsichere Wirkungen tragen weniger weit), und begrenzt das Ergebnis mit tanh.

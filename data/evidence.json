@@ -1,0 +1,162 @@
+{
+ "meta": {
+  "note": "Datenbelege je Wirkung: Welche Kennzahl steht für Ursache (x) und Wirkung (y)? Korrelation der jährlichen Veränderungen, x um 'lag' Jahre vorlaufend. 'invert': Kennzahl misst das Gegenteil der Größe und wird für den Vergleich umgekehrt gewertet.",
+  "method": "Pearson-Korrelation der Jahresveränderungen (Differenzen), damit gemeinsame Trends keine Scheinkorrelation erzeugen. Unter 10 Wertepaaren: zu wenige Daten. |r| < 0,2: kein klarer Zusammenhang."
+ },
+ "edges": {
+  "CN_SOC>CN_CON": {
+   "x": {
+    "source": "series",
+    "ind": "oop_health",
+    "iso": "CHN",
+    "invert": true
+   },
+   "y": {
+    "source": "series",
+    "ind": "hh_cons",
+    "iso": "CHN"
+   },
+   "lag": 0,
+   "note": "Ersatzgröße für soziale Sicherung: Anteil der Gesundheitskosten, die Patienten selbst zahlen (umgekehrt gewertet)."
+  },
+  "CN_CON>CN_EXP": {
+   "x": {
+    "source": "series",
+    "ind": "hh_cons",
+    "iso": "CHN"
+   },
+   "y": {
+    "source": "series",
+    "ind": "ca_gdp",
+    "iso": "CHN"
+   },
+   "lag": 0,
+   "note": "Ersatzgröße für den Exportüberschuss: Leistungsbilanzsaldo in % des BIP."
+  },
+  "CN_EXP>DE_AUTO": {
+   "x": {
+    "source": "trade",
+    "iso": "CHN",
+    "sector": 6
+   },
+   "y": {
+    "source": "trade",
+    "iso": "DEU",
+    "sector": 6
+   },
+   "lag": 0,
+   "note": "Weltmarktanteile bei Fahrzeugen (Sektor des Atlas of Economic Complexity)."
+  },
+  "CN_EXP>EU_IND": {
+   "x": {
+    "source": "trade",
+    "iso": "CHN"
+   },
+   "y": {
+    "source": "trade",
+    "iso": "DEU"
+   },
+   "lag": 0,
+   "note": "Weltmarktanteil an allen Warenexporten; Deutschland als Ersatz für die EU-Industrie."
+  },
+  "CN_EXP>DEFC": {
+   "x": {
+    "source": "trade",
+    "iso": "CHN"
+   },
+   "y": {
+    "source": "series",
+    "ind": "ca_gdp",
+    "iso": "USA",
+    "invert": true
+   },
+   "lag": 0,
+   "note": "USA als größtes Defizitland; Leistungsbilanzsaldo umgekehrt gewertet (mehr Defizit = höherer Wert)."
+  },
+  "DE_SUR>DEFC": {
+   "x": {
+    "source": "series",
+    "ind": "ca_gdp",
+    "iso": "DEU"
+   },
+   "y": {
+    "source": "series",
+    "ind": "ca_gdp",
+    "iso": "USA",
+    "invert": true
+   },
+   "lag": 0,
+   "note": "Deutschlands Überschuss gegen das US-Defizit. Viele weitere Länder wirken mit; nur ein schwacher Test."
+  },
+  "DE_DEMAND>DE_SUR": {
+   "x": {
+    "source": "series",
+    "ind": "gcf_gdp",
+    "iso": "DEU"
+   },
+   "y": {
+    "source": "series",
+    "ind": "ca_gdp",
+    "iso": "DEU"
+   },
+   "lag": 0,
+   "note": "Ersatzgröße für Binnennachfrage: Investitionsquote (Ersparnis − Investition = Leistungsbilanz)."
+  },
+  "RU_AGG>EU_DEF": {
+   "x": {
+    "source": "series",
+    "ind": "milex",
+    "iso": "RUS"
+   },
+   "y": {
+    "source": "series",
+    "ind": "milex",
+    "iso": "DEU"
+   },
+   "lag": 1,
+   "note": "Ersatzgröße für das Aggressionsrisiko: russische Militärausgaben in % des BIP; deutsche Ausgaben ein Jahr später."
+  },
+  "RU_MIL>RU_INF": {
+   "x": {
+    "source": "series",
+    "ind": "milex",
+    "iso": "RUS"
+   },
+   "y": {
+    "source": "series",
+    "ind": "inflation",
+    "iso": "RUS"
+   },
+   "lag": 1,
+   "note": "Militärausgaben in % des BIP gegen Inflation im Folgejahr."
+  },
+  "CLIM>EMIS": {
+   "x": {
+    "source": "series",
+    "ind": "renew_share",
+    "iso": "DEU"
+   },
+   "y": {
+    "source": "series",
+    "ind": "co2_terr",
+    "iso": "DEU"
+   },
+   "lag": 0,
+   "note": "Ersatzgröße für Klimaschutz: Anteil erneuerbarer Energien am Strom in Deutschland."
+  },
+  "LAND>BIO": {
+   "x": {
+    "source": "series",
+    "ind": "ag_land",
+    "iso": "BRA"
+   },
+   "y": {
+    "source": "series",
+    "ind": "rli",
+    "iso": "BRA"
+   },
+   "lag": 0,
+   "note": "Brasilien als Beispiel: Agrarfläche gegen Rote-Liste-Index (niedriger = höheres Aussterberisiko). Biodiversität reagiert langsam; Jahresveränderungen sind ein schwacher Test."
+  }
+ }
+}

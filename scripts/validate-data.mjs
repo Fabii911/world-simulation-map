@@ -82,6 +82,22 @@ try {
 } catch (e) { if (e.code !== 'ENOENT') err(`doughnut.json: ${e.message}`); }
 
 try {
+  const ch = read('data/chains.json');
+  const ek = new Set(model.edges.map((e) => `${e.from}>${e.to}`));
+  for (const c of ch.chains) for (const st of c.steps) if (!ek.has(`${st.from}>${st.to}`)) err(`chains.json: ${c.id} enthält Schritt ${st.from}>${st.to} ohne Wirkung im Modell`);
+  const ev = read('data/evidence.json');
+  const ind = new Set(indicators.indicators.map((i) => i.id));
+  for (const [k, spec] of Object.entries(ev.edges)) {
+    if (!ek.has(k)) err(`evidence.json: Wirkung ${k} existiert nicht`);
+    for (const side of ['x', 'y']) {
+      const sp = spec[side];
+      if (!sp || !['series', 'trade'].includes(sp.source)) err(`evidence.json: ${k}.${side} ungültige Quelle`);
+      else if (sp.source === 'series' && !ind.has(sp.ind)) err(`evidence.json: ${k}.${side} unbekannte Kennzahl ${sp.ind}`);
+    }
+  }
+  seriesInfo += `, Ketten: ${ch.chains.length}, Datenbelege: ${Object.keys(ev.edges).length}`;
+} catch (e) { err(`chains/evidence: ${e.message}`); }
+try {
   const tr = read('data/series/trade.json');
   const n = tr.meta.years.length;
   for (const [ch, a] of Object.entries(tr.world)) { if (!tr.meta.chapters[ch]) err(`trade.json: unbekanntes Kapitel ${ch}`); if (a.length !== n) err(`trade.json: Welt/${ch} falsche Länge`); }
